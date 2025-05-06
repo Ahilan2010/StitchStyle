@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Style & Stitch - Your Personal Fashion Advisor</title>
+    <title>Stitch & Style - Your Personal Fashion Advisor</title>
     <style>
         :root {
-            --primary: #ff6b6b;
-            --secondary: #4ecdc4;
-            --dark: #292f36;
+            --primary: #d4af37;
+            --secondary: #c0a02e;
+            --dark: #121212;
             --light: #f7f7f7;
-            --accent: #ffd166;
+            --accent: #ffd700;
+            --text-gold: #d4af37;
         }
         
         * {
@@ -21,9 +22,11 @@
         }
         
         body {
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--dark);
+            color: var(--text-gold);
             line-height: 1.6;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
         
         .container {
@@ -33,11 +36,12 @@
         }
         
         header {
-            background-color: var(--primary);
-            color: white;
+            background-color: rgba(18, 18, 18, 0.9);
+            color: var(--text-gold);
             padding: 20px 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .logo {
@@ -49,13 +53,15 @@
             justify-content: center;
         }
         
-        .logo i {
+        .logo img {
+            height: 60px;
             margin-right: 10px;
         }
         
         .tagline {
             font-size: 1.2rem;
             font-style: italic;
+            color: var(--text-gold);
         }
         
         main {
@@ -63,20 +69,22 @@
         }
         
         .card {
-            background-color: white;
+            background-color: rgba(18, 18, 18, 0.8);
             border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 15px rgba(212, 175, 55, 0.2);
             padding: 30px;
             margin-bottom: 30px;
             transition: transform 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(212, 175, 55, 0.3);
         }
         
         h2 {
-            color: var(--primary);
+            color: var(--text-gold);
             margin-bottom: 20px;
             border-bottom: 2px solid var(--secondary);
             padding-bottom: 10px;
@@ -97,24 +105,28 @@
         label {
             font-weight: bold;
             font-size: 1.1rem;
+            color: var(--text-gold);
         }
         
         input, select, textarea {
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            background-color: rgba(18, 18, 18, 0.6);
+            color: var(--text-gold);
             border-radius: 5px;
             font-size: 1rem;
             transition: border-color 0.3s;
         }
         
         input:focus, select:focus, textarea:focus {
-            border-color: var(--secondary);
+            border-color: var(--accent);
             outline: none;
+            box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
         }
         
         button {
-            background-color: var(--secondary);
-            color: white;
+            background-color: var(--primary);
+            color: var(--dark);
             border: none;
             padding: 12px 24px;
             font-size: 1.1rem;
@@ -127,7 +139,7 @@
         }
         
         button:hover {
-            background-color: #3ab4ac;
+            background-color: var(--accent);
             transform: translateY(-2px);
         }
         
@@ -137,14 +149,15 @@
         }
         
         .recommendation-item {
-            background-color: white;
+            background-color: rgba(18, 18, 18, 0.8);
             border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 10px rgba(212, 175, 55, 0.2);
             padding: 20px;
             margin-bottom: 20px;
             border-left: 5px solid var(--accent);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .recommendation-item::before {
@@ -165,11 +178,12 @@
         
         .recommendation-description {
             margin-bottom: 15px;
+            color: #cccccc;
         }
         
         .product-link {
             display: inline-block;
-            background-color: var(--accent);
+            background-color: var(--primary);
             color: var(--dark);
             text-decoration: none;
             padding: 8px 15px;
@@ -179,16 +193,17 @@
         }
         
         .product-link:hover {
-            background-color: #e9bd57;
+            background-color: var(--accent);
             transform: translateY(-2px);
         }
         
         footer {
-            background-color: var(--dark);
-            color: white;
+            background-color: rgba(18, 18, 18, 0.9);
+            color: var(--text-gold);
             text-align: center;
             padding: 20px 0;
             margin-top: 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .loading {
@@ -200,8 +215,8 @@
         .loading-spinner {
             width: 50px;
             height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--secondary);
+            border: 5px solid rgba(212, 175, 55, 0.1);
+            border-top: 5px solid var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto;
@@ -213,7 +228,7 @@
         }
         
         .error-message {
-            color: var(--primary);
+            color: #ff6b6b;
             font-weight: bold;
             display: none;
             margin: 10px 0;
@@ -240,9 +255,9 @@
     <header>
         <div class="container">
             <div class="logo">
-                <i class="fas fa-tshirt"></i> Style & Stitch
+                <img src="/api/placeholder/60/60" alt="Stitch & Style Logo"> Stitch & Style
             </div>
-            <div class="tagline">Fashion recommendations with a twist of humor!</div>
+            <div class="tagline">Elevate your fashion with a touch of gold</div>
         </div>
     </header>
     
@@ -268,6 +283,9 @@
                         <option value="trendy">Trendy & Fashionable</option>
                         <option value="edgy">Edgy & Bold</option>
                         <option value="vintage">Vintage & Retro</option>
+                        <option value="luxury">Luxury & Elegant</option>
+                        <option value="minimalist">Minimalist & Clean</option>
+                        <option value="streetwear">Streetwear & Urban</option>
                         <option value="surprise">Surprise Me!</option>
                     </select>
                 </div>
@@ -293,7 +311,7 @@
     
     <footer>
         <div class="container">
-            <p>&copy; 2025 Style & Stitch - Making fashion fun again!</p>
+            <p>&copy; 2025 Stitch & Style - Redefining elegance, one outfit at a time</p>
         </div>
     </footer>
     
@@ -302,172 +320,222 @@
         const fashionItems = {
             beach: [
                 {
-                    title: "The Lobster Lounger",
-                    description: "Replace those boring shorts with these lobster-print swim trunks. Perfect for making a splash and getting some laughs when you're catching waves!",
-                    link: "https://example.com/lobster-trunks"
+                    title: "The Golden Sand Sarong",
+                    description: "Replace those ordinary beach shorts with our metallic gold-threaded sarong. It shimmers in the sunlight like the ocean at sunset, turning heads with every breeze.",
+                    link: "https://example.com/gold-sarong"
                 },
                 {
-                    title: "Pineapple Poncho",
-                    description: "Swap your plain cover-up for this fruity pineapple poncho. It's giving 'tropical vacation' meets 'walking fruit salad' energy!",
-                    link: "https://example.com/pineapple-poncho"
+                    title: "The Poseidon Pendant",
+                    description: "Trade that simple necklace for our gold-dipped trident pendant. It's not just a statement piece—it's a conversation with the sea gods themselves.",
+                    link: "https://example.com/poseidon-pendant"
                 },
                 {
-                    title: "Sunset Sarong",
-                    description: "Trade those basic beach shorts for a gradient sunset sarong. Wrap yourself in cotton candy colors that match the sky at dusk!",
-                    link: "https://example.com/sunset-sarong"
+                    title: "Midas Touch Sunglasses",
+                    description: "Upgrade those basic shades to our gold-framed, amber-tinted luxury eyewear. They don't just block the sun; they transform it into your personal spotlight.",
+                    link: "https://example.com/midas-sunglasses"
+                },
+                {
+                    title: "The Siren's Wrap",
+                    description: "Swap that ordinary cover-up for our sheer, gold-flecked beach kimono. Flowing like liquid gold as you walk along the shore, creating mesmerizing patterns in the sunlight.",
+                    link: "https://example.com/sirens-wrap"
                 }
             ],
             office: [
                 {
-                    title: "The Monday Motivator Tie",
-                    description: "Replace that sad solid tie with our motivational quote tie. Nothing says 'corporate visionary' like wearing inspirational quotes around your neck!",
-                    link: "https://example.com/quote-tie"
+                    title: "The Executive Statement Watch",
+                    description: "Replace that understated timepiece with our subtle yet commanding gold-accented chronograph. It whispers 'I value precision' while shouting 'I've arrived.'",
+                    link: "https://example.com/executive-watch"
                 },
                 {
-                    title: "Stealth Slippers",
-                    description: "Swap those uncomfortable dress shoes for our formal-looking slippers. They look professional but feel like clouds - your secret office weapon!",
-                    link: "https://example.com/stealth-slippers"
+                    title: "The Power Play Blazer",
+                    description: "Upgrade that conventional jacket with our black blazer featuring gold threading and custom buttons. Command the boardroom without saying a word.",
+                    link: "https://example.com/power-blazer"
                 },
                 {
-                    title: "The Executive Emoji Socks",
-                    description: "Hide your personality under those boring slacks with our business emoji socks. Nothing says 'I'm professional but fun' like wearing tiny pie charts on your ankles!",
-                    link: "https://example.com/emoji-socks"
+                    title: "The CEO's Secret Socks",
+                    description: "Hide your ambition under those formal pants with our gold-threaded, cushioned luxury socks. Your feet deserve a corner office of their own.",
+                    link: "https://example.com/ceo-socks"
+                },
+                {
+                    title: "The Boardroom Dominance Pen",
+                    description: "Replace that plastic ballpoint with our weighted gold fountain pen. When contracts need signing, nothing makes a statement like the sound of liquid gold on paper.",
+                    link: "https://example.com/gold-pen"
                 }
             ],
             date: [
                 {
-                    title: "Conversation Starter Cufflinks",
-                    description: "Trade those boring metal circles for miniature food cufflinks. Nothing breaks the ice like tiny tacos on your wrists!",
-                    link: "https://example.com/food-cufflinks"
+                    title: "The Heartbreaker Cufflinks",
+                    description: "Trade those basic metal squares for our asymmetric gold heart cufflinks. They catch the light with every gesture, ensuring all attention remains on you.",
+                    link: "https://example.com/heart-cufflinks"
                 },
                 {
-                    title: "Mood Ring Necklace",
-                    description: "Swap that simple chain for our temperature-sensitive mood necklace. Let your date know exactly how you're feeling without saying a word!",
-                    link: "https://example.com/mood-necklace"
+                    title: "The Chemistry Booster Cologne",
+                    description: "Swap that everyday scent for our amber and gold-flecked cologne. The bottle looks impressive on your counter, but the reaction it gets will be even better.",
+                    link: "https://example.com/chemistry-cologne"
                 },
                 {
-                    title: "The Second Date Guarantee Jacket",
-                    description: "Replace your standard blazer with our constellation map jacket. The stars literally align when you wear this - perfect for romantic stargazing after dinner!",
-                    link: "https://example.com/star-jacket"
+                    title: "The Second Date Guarantee Earrings",
+                    description: "Replace those simple studs with our cascading gold geometric earrings. They frame your face in a golden glow that makes candlelight jealous.",
+                    link: "https://example.com/cascade-earrings"
+                },
+                {
+                    title: "The Unforgettable Impression Belt",
+                    description: "Upgrade that plain leather belt with our subtle gold-buckled masterpiece. It's the detail they'll remember long after the night ends.",
+                    link: "https://example.com/impression-belt"
                 }
             ],
             gym: [
                 {
-                    title: "Motivational Megaphone Headband",
-                    description: "Swap that plain sweatband for our built-in audio headband that shouts motivational phrases when you slow down. Nothing kicks your workout into high gear like a stranger's voice yelling 'FEEL THE BURN!'",
-                    link: "https://example.com/motivational-headband"
+                    title: "The Gold Standard Compression Shirt",
+                    description: "Replace that sweaty cotton tee with our moisture-wicking, gold-patterned compression shirt. It doesn't just make you look good—it actively helps you perform better.",
+                    link: "https://example.com/gold-compression"
                 },
                 {
-                    title: "The Flexometer Watch",
-                    description: "Replace your fitness tracker with our Flexometer. It doesn't just count steps - it measures how impressed others are with your muscles (results may vary)!",
-                    link: "https://example.com/flexometer"
+                    title: "The Champion's Water Bottle",
+                    description: "Upgrade that plastic bottle to our vacuum-sealed, gold-accented hydration vessel. It keeps cold drinks cold for 24 hours—about as long as people will be talking about your workout.",
+                    link: "https://example.com/champion-bottle"
                 },
                 {
-                    title: "Anti-Gravity Socks",
-                    description: "Upgrade from those basic athletic socks to our anti-gravity pair. They make your feet feel lighter, so you can pretend those squats are easier than they actually are!",
-                    link: "https://example.com/antigravity-socks"
+                    title: "The Victory Lap Shoes",
+                    description: "Swap those basic trainers for our performance-engineered running shoes with gold energy-return technology. They don't just support your feet—they celebrate them.",
+                    link: "https://example.com/victory-shoes"
+                },
+                {
+                    title: "The Olympian's Duffel",
+                    description: "Replace that worn gym bag with our compartmentalized, gold-accented training duffel. Separate sections for clean and workout gear mean you'll never mix the two again.",
+                    link: "https://example.com/olympian-duffel"
                 }
             ],
             concert: [
                 {
-                    title: "The Crowd Surfing Jumpsuit",
-                    description: "Trade those regular jeans for our padded, waterproof, crowd-surf-optimized jumpsuit. Features include reinforced knees and 'please pass me along' instructions printed on the back!",
-                    link: "https://example.com/surfing-jumpsuit"
+                    title: "The Spotlight Stealer Jacket",
+                    description: "Trade that plain jacket for our subtle gold-flecked, light-reactive outerwear. It captures and amplifies stage lights, making you the second-most photographed entity in the venue.",
+                    link: "https://example.com/spotlight-jacket"
                 },
                 {
-                    title: "Encore Enhancer Light-Up Shoes",
-                    description: "Swap those standard sneakers for our light-up shoes that flash in sync with the music. Be the human disco ball the crowd never knew they needed!",
-                    link: "https://example.com/lightup-shoes"
+                    title: "The Bass Enhancer Boots",
+                    description: "Upgrade those comfortable shoes to our specially designed concert boots with gold hardware. The elevated platform lets you see over the crowd while the reinforced sole lets you feel every beat.",
+                    link: "https://example.com/bass-boots"
                 },
                 {
-                    title: "The Mosh Pit Protector Jacket",
-                    description: "Upgrade from that thin hoodie to our padded, beverageproof concert jacket. Complete with extendable selfie stick in the sleeve for perfect stage shots!",
-                    link: "https://example.com/moshpit-jacket"
+                    title: "The VIP Access Crossbody",
+                    description: "Replace that bulky bag with our sleek, RFID-protected gold chain crossbody. It keeps your essentials secure and your hands free for when the chorus hits.",
+                    link: "https://example.com/vip-crossbody"
+                },
+                {
+                    title: "The Encore Earpiece",
+                    description: "Protect your hearing in style with our gold-toned acoustic filtering earbuds. They reduce harmful frequencies while enhancing vocals—perfect for true music lovers.",
+                    link: "https://example.com/encore-earpiece"
                 }
             ],
             wedding: [
                 {
-                    title: "Reception-Ready Dance Shoes",
-                    description: "Replace those formal shoes with our hybrid dance kicks. They look classy for the ceremony but transform into comfortable dance machines for the reception!",
-                    link: "https://example.com/dance-shoes"
+                    title: "The Toast Master Tie",
+                    description: "Upgrade that rental tie to our champagne-gold, subtly patterned silk masterpiece. It photographs beautifully and won't show a drop if someone gets emotional during speeches.",
+                    link: "https://example.com/toastmaster-tie"
                 },
                 {
-                    title: "The Cake Defender Tie",
-                    description: "Swap that silk tie for our stain-repellent, cake-proof neckwear. White frosting doesn't stand a chance against this fashion force field!",
-                    link: "https://example.com/stainproof-tie"
+                    title: "The Ceremony-to-Dancing Shoes",
+                    description: "Replace those stiff dress shoes with our specially designed formal footwear featuring gold accents and hidden comfort technology. They look perfect in photos and feel perfect on the dance floor.",
+                    link: "https://example.com/ceremony-shoes"
                 },
                 {
-                    title: "The Emotional Support Pocket Square",
-                    description: "Upgrade from that basic pocket square to our 'Emotional Support' version with hidden tissues and tiny pep talks printed on the inside. Perfect for teary ceremonies!",
-                    link: "https://example.com/support-square"
+                    title: "The Memory Maker Cuff Bracelet",
+                    description: "Swap that simple jewelry for our adjustable gold cuff with subtle engraving. It elevates any outfit while remaining timeless in wedding photos you'll cherish forever.",
+                    link: "https://example.com/memory-cuff"
+                },
+                {
+                    title: "The Celebration Clutch",
+                    description: "Upgrade that basic purse to our expandable gold-accented evening bag. It starts sleek for the ceremony but has hidden compartments for all the reception essentials.",
+                    link: "https://example.com/celebration-clutch"
                 }
             ],
             hiking: [
                 {
-                    title: "The Wildlife Whisperer Hat",
-                    description: "Replace that basic cap with our animal sound-generating hat. Plays realistic bird calls to make you seem like a wilderness expert (squirrel sounds may attract actual squirrels)!",
-                    link: "https://example.com/wildlife-hat"
+                    title: "The Explorer's Compass Watch",
+                    description: "Replace that fitness tracker with our multifunctional timepiece featuring altimeter, barometer, and gold-accented bezel. Adventure awaits those who know where they're going.",
+                    link: "https://example.com/compass-watch"
                 },
                 {
-                    title: "Instagram-Ready Hiking Boots",
-                    description: "Swap those practical boots for our social media optimized footwear. They leave custom trail messages with every step, like 'Adventure Seeker' or 'Nature Influencer'!",
-                    link: "https://example.com/message-boots"
+                    title: "The Summit Seeker Backpack",
+                    description: "Upgrade that basic daypack to our ergonomically designed carrier with gold hardware and waterproof compartments. The wilderness deserves to be explored in style.",
+                    link: "https://example.com/summit-backpack"
                 },
                 {
-                    title: "The Mosquito Moat Socks",
-                    description: "Upgrade from standard hiking socks to our bug-repellent, extra-tall trail guardians. They create a force field against insects - your ankles will thank you!",
-                    link: "https://example.com/mosquito-socks"
+                    title: "The Trail Blazer Boots",
+                    description: "Swap those worn hikers for our reinforced, gold-hardwared all-terrain boots. The specially designed tread pattern leaves a distinctive mark, like your personal signature on the earth.",
+                    link: "https://example.com/trail-boots"
+                },
+                {
+                    title: "The Wilderness Warrior Jacket",
+                    description: "Replace that basic shell with our temperature-regulating, gold-accented technical jacket. Multiple hidden pockets mean your essentials are always within reach, never weighing you down.",
+                    link: "https://example.com/warrior-jacket"
                 }
             ],
             interview: [
                 {
-                    title: "The Confidence Injection Blazer",
-                    description: "Replace that nervous-looking jacket with our posture-correcting, shoulder-enhancing blazer. Subtle padding creates a power stance even when you're internally panicking!",
-                    link: "https://example.com/confidence-blazer"
+                    title: "The First Impression Folio",
+                    description: "Upgrade that manila folder to our black leather portfolio with subtle gold corner reinforcements. It protects your resume physically while elevating it symbolically.",
+                    link: "https://example.com/impression-folio"
                 },
                 {
-                    title: "Mind-Reader Glasses",
-                    description: "Swap those regular frames for our interview-optimized glasses. They don't actually read minds, but the slight magnification makes maintaining eye contact less terrifying!",
-                    link: "https://example.com/interview-glasses"
+                    title: "The Confidence Catalyst Watch",
+                    description: "Replace that everyday timepiece with our minimalist black and gold watch. A quick glance at your wrist doesn't just tell time—it reminds you of your value.",
+                    link: "https://example.com/catalyst-watch"
                 },
                 {
-                    title: "The Sweat Concealer Shirt",
-                    description: "Upgrade from that stress-showing button-up to our perspiration-camouflaging dress shirt. Nervous sweating will remain your secret even during the toughest questions!",
-                    link: "https://example.com/sweatproof-shirt"
+                    title: "The Perfect Answer Pen",
+                    description: "Swap that borrowed ballpoint for our weighted gold-accented fountain pen. The smooth flow of ink mirrors the smooth flow of your thoughtful responses.",
+                    link: "https://example.com/answer-pen"
+                },
+                {
+                    title: "The Success Story Glasses",
+                    description: "Trade those basic frames for our subtle gold-reinforced eyewear. They don't just correct vision—they project vision, helping interviewers see your future at their company.",
+                    link: "https://example.com/success-glasses"
                 }
             ],
             party: [
                 {
-                    title: "The Conversation Starter Jacket",
-                    description: "Replace that plain jacket with our interactive party blazer. Features include built-in conversation topics on the lining and a drink holder pocket to free up your networking hand!",
-                    link: "https://example.com/conversation-jacket"
+                    title: "The Entrance Maker Jacket",
+                    description: "Replace that everyday coat with our black and gold embroidered statement piece. It doesn't just turn heads—it keeps them turned, creating a gravitational field of fascination.",
+                    link: "https://example.com/entrance-jacket"
                 },
                 {
-                    title: "Memory Maker Shoes",
-                    description: "Swap those forgettable shoes for our light-up dance floors for your feet. They illuminate with every step, making you the walking party everyone gravitates toward!",
-                    link: "https://example.com/lightup-partysshoes"
+                    title: "The Conversation Starter Necklace",
+                    description: "Upgrade that simple chain to our abstract gold geometric pendant. Its unique design naturally draws questions, giving you the perfect opening to showcase your personality.",
+                    link: "https://example.com/conversation-necklace"
                 },
                 {
-                    title: "The Social Butterfly Wings",
-                    description: "Upgrade your boring outfit with our attachable iridescent party wings. They make entrance photos magical and ensure nobody will forget who you are!",
-                    link: "https://example.com/party-wings"
+                    title: "The Last-to-Leave Shoes",
+                    description: "Swap those uncomfortable heels for our specially designed party footwear with gold accents and hidden comfort technology. They look spectacular at hour one and feel spectacular at hour five.",
+                    link: "https://example.com/party-shoes"
+                },
+                {
+                    title: "The Social Butterfly Pin",
+                    description: "Add our delicate gold butterfly lapel pin to any outfit. Its subtle movement with each gesture creates a mesmerizing effect that makes even simple stories seem captivating.",
+                    link: "https://example.com/butterfly-pin"
                 }
             ],
             default: [
                 {
-                    title: "The Anywhere Appropriate Convertible Pants",
-                    description: "Replace those single-purpose bottoms with our 5-in-1 convertible pants. They transform from long pants to shorts to a skirt to board shorts to formal slacks with a few strategic zips!",
-                    link: "https://example.com/convertible-pants"
+                    title: "The Everywhere Adapter Belt",
+                    description: "Replace that single-purpose belt with our reversible black-to-brown design featuring interchangeable gold buckles. It transitions seamlessly from casual to formal, just like you do.",
+                    link: "https://example.com/adapter-belt"
                 },
                 {
-                    title: "The Weather Defier Jacket",
-                    description: "Swap that season-specific coat for our climate-controlled smart jacket. It has heating elements for cold days, cooling vents for warm ones, and water repellent everywhere!",
-                    link: "https://example.com/smart-jacket"
+                    title: "The Climate Commander Jacket",
+                    description: "Upgrade that season-specific outer layer to our all-weather, gold-hardwared convertible jacket. Removable sleeves, hidden hood, and adjustable insulation mean you're prepared for anything.",
+                    link: "https://example.com/climate-jacket"
                 },
                 {
-                    title: "The Identity Crisis Hat",
-                    description: "Can't decide on your style? This transforming headwear goes from beanie to baseball cap to bucket hat to fedora faster than you can say 'fashion indecision'!",
-                    link: "https://example.com/transformer-hat"
+                    title: "The Life Optimizer Bag",
+                    description: "Swap that ordinary bag for our multifunctional carry-all with gold accents and customizable compartments. It adapts to your daily needs, whether that's gym, work, travel, or all three.",
+                    link: "https://example.com/optimizer-bag"
+                },
+                {
+                    title: "The Identity Definer Bracelet",
+                    description: "Add our understated gold bangle with hidden personalization to your collection. The exterior remains elegantly minimal while the interior carries a message meaningful only to you.",
+                    link: "https://example.com/identity-bracelet"
                 }
             ]
         };
@@ -547,25 +615,33 @@
             // Look for specific items in the outfit description
             if (outfitLower.includes('jeans') || outfitLower.includes('pants')) {
                 personalizedRecs.push({
-                    title: "The Comfort Revolution Bottoms",
-                    description: `We noticed you're wearing pants/jeans! Replace them with our specially designed ${category}-optimized bottoms that look like regular pants but feel like pajamas.`,
-                    link: "https://example.com/comfort-pants"
+                    title: "The Golden Thread Trousers",
+                    description: `We noticed you're wearing pants/jeans! Elevate your look with our specially designed ${category}-optimized bottoms featuring subtle gold threading and premium comfort technology.`,
+                    link: "https://example.com/gold-thread-pants"
                 });
             }
             
             if (outfitLower.includes('t-shirt') || outfitLower.includes('shirt') || outfitLower.includes('top')) {
                 personalizedRecs.push({
-                    title: "The Mood-Matching Top",
-                    description: `Upgrade that shirt with our adaptive color-changing top that adjusts to complement your mood and the ${category} atmosphere!`,
-                    link: "https://example.com/mood-shirt"
+                    title: "The Midas Touch Top",
+                    description: `Upgrade that shirt with our black and gold accent top that adapts to your body temperature and complements the ${category} atmosphere with subtle metallic highlights!`,
+                    link: "https://example.com/midas-shirt"
                 });
             }
             
             if (outfitLower.includes('sneaker') || outfitLower.includes('shoe') || outfitLower.includes('boot')) {
                 personalizedRecs.push({
-                    title: "The Terrain Transformer Footwear",
-                    description: `Those shoes look fine, but our adjustable-tread smart shoes automatically optimize for any ${category} surface you encounter!`,
-                    link: "https://example.com/smart-shoes"
+                    title: "The Golden Path Footwear",
+                    description: `Those shoes are fine, but our black footwear with gold accents feature variable-terrain soles that automatically optimize for any ${category} surface you encounter!`,
+                    link: "https://example.com/golden-path-shoes"
+                });
+            }
+            
+            if (outfitLower.includes('watch') || outfitLower.includes('timepiece')) {
+                personalizedRecs.push({
+                    title: "The Timeless Treasure Chronograph",
+                    description: `We noticed your watch! Elevate your timekeeping with our black and gold masterpiece that not only tells time but tells a story about your impeccable taste.`,
+                    link: "https://example.com/treasure-watch"
                 });
             }
             
