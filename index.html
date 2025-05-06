@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style & Stitch - Your Personal Fashion Advisor</title>
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --dark: #292f36;
+            --light: #f7f7f7;
+            --accent: #ffd166;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        label {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+        
+        button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+            align-self: flex-start;
+        }
+        
+        button:hover {
+            background-color: #3ab4ac;
+            transform: translateY(-2px);
+        }
+        
+        #recommendations {
+            display: none;
+            margin-top: 40px;
+        }
+        
+        .recommendation-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .recommendation-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .recommendation-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .recommendation-description {
+            margin-bottom: 15px;
+        }
+        
+        .product-link {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .product-link:hover {
+            background-color: #e9bd57;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            color: var(--primary);
+            font-weight: bold;
+            display: none;
+            margin: 10px 0;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-tshirt"></i> Style & Stitch
+            </div>
+            <div class="tagline">Fashion recommendations with a twist of humor!</div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="card">
+            <h2>Let's Upgrade Your Style!</h2>
+            <form id="styleForm">
+                <div class="form-group">
+                    <label for="destination">Where are you going?</label>
+                    <input type="text" id="destination" name="destination" placeholder="Beach, office, date night, etc." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="currentOutfit">What are you wearing right now?</label>
+                    <textarea id="currentOutfit" name="currentOutfit" rows="4" placeholder="Describe your current outfit (top, bottom, shoes, accessories, etc.)" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="vibe">What vibe are you going for?</label>
+                    <select id="vibe" name="vibe">
+                        <option value="casual">Casual & Comfortable</option>
+                        <option value="formal">Formal & Polished</option>
+                        <option value="trendy">Trendy & Fashionable</option>
+                        <option value="edgy">Edgy & Bold</option>
+                        <option value="vintage">Vintage & Retro</option>
+                        <option value="surprise">Surprise Me!</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="submitBtn">Get Recommendations</button>
+            </form>
+            
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p>Finding your perfect style matches...</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                Please fill in all fields before submitting!
+            </div>
+        </div>
+        
+        <div id="recommendations">
+            <h2>Your Style Recommendations</h2>
+            <div id="recommendationsList"></div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Style & Stitch - Making fashion fun again!</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Fashion recommendations database
+        const fashionItems = {
+            beach: [
+                {
+                    title: "The Lobster Lounger",
+                    description: "Replace those boring shorts with these lobster-print swim trunks. Perfect for making a splash and getting some laughs when you're catching waves!",
+                    link: "https://example.com/lobster-trunks"
+                },
+                {
+                    title: "Pineapple Poncho",
+                    description: "Swap your plain cover-up for this fruity pineapple poncho. It's giving 'tropical vacation' meets 'walking fruit salad' energy!",
+                    link: "https://example.com/pineapple-poncho"
+                },
+                {
+                    title: "Sunset Sarong",
+                    description: "Trade those basic beach shorts for a gradient sunset sarong. Wrap yourself in cotton candy colors that match the sky at dusk!",
+                    link: "https://example.com/sunset-sarong"
+                }
+            ],
+            office: [
+                {
+                    title: "The Monday Motivator Tie",
+                    description: "Replace that sad solid tie with our motivational quote tie. Nothing says 'corporate visionary' like wearing inspirational quotes around your neck!",
+                    link: "https://example.com/quote-tie"
+                },
+                {
+                    title: "Stealth Slippers",
+                    description: "Swap those uncomfortable dress shoes for our formal-looking slippers. They look professional but feel like clouds - your secret office weapon!",
+                    link: "https://example.com/stealth-slippers"
+                },
+                {
+                    title: "The Executive Emoji Socks",
+                    description: "Hide your personality under those boring slacks with our business emoji socks. Nothing says 'I'm professional but fun' like wearing tiny pie charts on your ankles!",
+                    link: "https://example.com/emoji-socks"
+                }
+            ],
+            date: [
+                {
+                    title: "Conversation Starter Cufflinks",
+                    description: "Trade those boring metal circles for miniature food cufflinks. Nothing breaks the ice like tiny tacos on your wrists!",
+                    link: "https://example.com/food-cufflinks"
+                },
+                {
+                    title: "Mood Ring Necklace",
+                    description: "Swap that simple chain for our temperature-sensitive mood necklace. Let your date know exactly how you're feeling without saying a word!",
+                    link: "https://example.com/mood-necklace"
+                },
+                {
+                    title: "The Second Date Guarantee Jacket",
+                    description: "Replace your standard blazer with our constellation map jacket. The stars literally align when you wear this - perfect for romantic stargazing after dinner!",
+                    link: "https://example.com/star-jacket"
+                }
+            ],
+            gym: [
+                {
+                    title: "Motivational Megaphone Headband",
+                    description: "Swap that plain sweatband for our built-in audio headband that shouts motivational phrases when you slow down. Nothing kicks your workout into high gear like a stranger's voice yelling 'FEEL THE BURN!'",
+                    link: "https://example.com/motivational-headband"
+                },
+                {
+                    title: "The Flexometer Watch",
+                    description: "Replace your fitness tracker with our Flexometer. It doesn't just count steps - it measures how impressed others are with your muscles (results may vary)!",
+                    link: "https://example.com/flexometer"
+                },
+                {
+                    title: "Anti-Gravity Socks",
+                    description: "Upgrade from those basic athletic socks to our anti-gravity pair. They make your feet feel lighter, so you can pretend those squats are easier than they actually are!",
+                    link: "https://example.com/antigravity-socks"
+                }
+            ],
+            concert: [
+                {
+                    title: "The Crowd Surfing Jumpsuit",
+                    description: "Trade those regular jeans for our padded, waterproof, crowd-surf-optimized jumpsuit. Features include reinforced knees and 'please pass me along' instructions printed on the back!",
+                    link: "https://example.com/surfing-jumpsuit"
+                },
+                {
+                    title: "Encore Enhancer Light-Up Shoes",
+                    description: "Swap those standard sneakers for our light-up shoes that flash in sync with the music. Be the human disco ball the crowd never knew they needed!",
+                    link: "https://example.com/lightup-shoes"
+                },
+                {
+                    title: "The Mosh Pit Protector Jacket",
+                    description: "Upgrade from that thin hoodie to our padded, beverageproof concert jacket. Complete with extendable selfie stick in the sleeve for perfect stage shots!",
+                    link: "https://example.com/moshpit-jacket"
+                }
+            ],
+            wedding: [
+                {
+                    title: "Reception-Ready Dance Shoes",
+                    description: "Replace those formal shoes with our hybrid dance kicks. They look classy for the ceremony but transform into comfortable dance machines for the reception!",
+                    link: "https://example.com/dance-shoes"
+                },
+                {
+                    title: "The Cake Defender Tie",
+                    description: "Swap that silk tie for our stain-repellent, cake-proof neckwear. White frosting doesn't stand a chance against this fashion force field!",
+                    link: "https://example.com/stainproof-tie"
+                },
+                {
+                    title: "The Emotional Support Pocket Square",
+                    description: "Upgrade from that basic pocket square to our 'Emotional Support' version with hidden tissues and tiny pep talks printed on the inside. Perfect for teary ceremonies!",
+                    link: "https://example.com/support-square"
+                }
+            ],
+            hiking: [
+                {
+                    title: "The Wildlife Whisperer Hat",
+                    description: "Replace that basic cap with our animal sound-generating hat. Plays realistic bird calls to make you seem like a wilderness expert (squirrel sounds may attract actual squirrels)!",
+                    link: "https://example.com/wildlife-hat"
+                },
+                {
+                    title: "Instagram-Ready Hiking Boots",
+                    description: "Swap those practical boots for our social media optimized footwear. They leave custom trail messages with every step, like 'Adventure Seeker' or 'Nature Influencer'!",
+                    link: "https://example.com/message-boots"
+                },
+                {
+                    title: "The Mosquito Moat Socks",
+                    description: "Upgrade from standard hiking socks to our bug-repellent, extra-tall trail guardians. They create a force field against insects - your ankles will thank you!",
+                    link: "https://example.com/mosquito-socks"
+                }
+            ],
+            interview: [
+                {
+                    title: "The Confidence Injection Blazer",
+                    description: "Replace that nervous-looking jacket with our posture-correcting, shoulder-enhancing blazer. Subtle padding creates a power stance even when you're internally panicking!",
+                    link: "https://example.com/confidence-blazer"
+                },
+                {
+                    title: "Mind-Reader Glasses",
+                    description: "Swap those regular frames for our interview-optimized glasses. They don't actually read minds, but the slight magnification makes maintaining eye contact less terrifying!",
+                    link: "https://example.com/interview-glasses"
+                },
+                {
+                    title: "The Sweat Concealer Shirt",
+                    description: "Upgrade from that stress-showing button-up to our perspiration-camouflaging dress shirt. Nervous sweating will remain your secret even during the toughest questions!",
+                    link: "https://example.com/sweatproof-shirt"
+                }
+            ],
+            party: [
+                {
+                    title: "The Conversation Starter Jacket",
+                    description: "Replace that plain jacket with our interactive party blazer. Features include built-in conversation topics on the lining and a drink holder pocket to free up your networking hand!",
+                    link: "https://example.com/conversation-jacket"
+                },
+                {
+                    title: "Memory Maker Shoes",
+                    description: "Swap those forgettable shoes for our light-up dance floors for your feet. They illuminate with every step, making you the walking party everyone gravitates toward!",
+                    link: "https://example.com/lightup-partysshoes"
+                },
+                {
+                    title: "The Social Butterfly Wings",
+                    description: "Upgrade your boring outfit with our attachable iridescent party wings. They make entrance photos magical and ensure nobody will forget who you are!",
+                    link: "https://example.com/party-wings"
+                }
+            ],
+            default: [
+                {
+                    title: "The Anywhere Appropriate Convertible Pants",
+                    description: "Replace those single-purpose bottoms with our 5-in-1 convertible pants. They transform from long pants to shorts to a skirt to board shorts to formal slacks with a few strategic zips!",
+                    link: "https://example.com/convertible-pants"
+                },
+                {
+                    title: "The Weather Defier Jacket",
+                    description: "Swap that season-specific coat for our climate-controlled smart jacket. It has heating elements for cold days, cooling vents for warm ones, and water repellent everywhere!",
+                    link: "https://example.com/smart-jacket"
+                },
+                {
+                    title: "The Identity Crisis Hat",
+                    description: "Can't decide on your style? This transforming headwear goes from beanie to baseball cap to bucket hat to fedora faster than you can say 'fashion indecision'!",
+                    link: "https://example.com/transformer-hat"
+                }
+            ]
+        };
+
+        document.getElementById('styleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const destination = document.getElementById('destination').value.trim().toLowerCase();
+            const currentOutfit = document.getElementById('currentOutfit').value.trim();
+            const vibe = document.getElementById('vibe').value;
+            
+            // Validate form
+            if (!destination || !currentOutfit) {
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('errorMessage').style.display = 'none';
+            }
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('recommendations').style.display = 'none';
+            
+            // Simulate processing time
+            setTimeout(() => {
+                generateRecommendations(destination, currentOutfit, vibe);
+                
+                // Hide loading and show recommendations
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('recommendations').style.display = 'block';
+                
+                // Scroll to recommendations
+                document.getElementById('recommendations').scrollIntoView({ behavior: 'smooth' });
+            }, 1500);
+        });
+        
+        function generateRecommendations(destination, currentOutfit, vibe) {
+            // Parse destination to find matching category
+            let category = 'default';
+            
+            if (destination.includes('beach') || destination.includes('pool') || destination.includes('ocean') || destination.includes('swim')) {
+                category = 'beach';
+            } else if (destination.includes('office') || destination.includes('work') || destination.includes('business')) {
+                category = 'office';
+            } else if (destination.includes('date') || destination.includes('dinner') || destination.includes('romantic')) {
+                category = 'date';
+            } else if (destination.includes('gym') || destination.includes('workout') || destination.includes('exercise') || destination.includes('fitness')) {
+                category = 'gym';
+            } else if (destination.includes('concert') || destination.includes('festival') || destination.includes('show') || destination.includes('music')) {
+                category = 'concert';
+            } else if (destination.includes('wedding') || destination.includes('ceremony') || destination.includes('reception')) {
+                category = 'wedding';
+            } else if (destination.includes('hike') || destination.includes('trail') || destination.includes('mountain') || destination.includes('outdoor')) {
+                category = 'hiking';
+            } else if (destination.includes('interview') || destination.includes('job')) {
+                category = 'interview';
+            } else if (destination.includes('party') || destination.includes('celebration') || destination.includes('club')) {
+                category = 'party';
+            }
+            
+            // Get recommendations based on category
+            let recommendations = fashionItems[category] || fashionItems.default;
+            
+            // Adjust based on vibe if needed
+            if (vibe === 'surprise') {
+                // Randomly select from any category
+                const allCategories = Object.keys(fashionItems);
+                const randomCategory = allCategories[Math.floor(Math.random() * allCategories.length)];
+                recommendations = fashionItems[randomCategory];
+            }
+            
+            // Personalize recommendations based on current outfit
+            const outfitLower = currentOutfit.toLowerCase();
+            let personalizedRecs = [];
+            
+            // Look for specific items in the outfit description
+            if (outfitLower.includes('jeans') || outfitLower.includes('pants')) {
+                personalizedRecs.push({
+                    title: "The Comfort Revolution Bottoms",
+                    description: `We noticed you're wearing pants/jeans! Replace them with our specially designed ${category}-optimized bottoms that look like regular pants but feel like pajamas.`,
+                    link: "https://example.com/comfort-pants"
+                });
+            }
+            
+            if (outfitLower.includes('t-shirt') || outfitLower.includes('shirt') || outfitLower.includes('top')) {
+                personalizedRecs.push({
+                    title: "The Mood-Matching Top",
+                    description: `Upgrade that shirt with our adaptive color-changing top that adjusts to complement your mood and the ${category} atmosphere!`,
+                    link: "https://example.com/mood-shirt"
+                });
+            }
+            
+            if (outfitLower.includes('sneaker') || outfitLower.includes('shoe') || outfitLower.includes('boot')) {
+                personalizedRecs.push({
+                    title: "The Terrain Transformer Footwear",
+                    description: `Those shoes look fine, but our adjustable-tread smart shoes automatically optimize for any ${category} surface you encounter!`,
+                    link: "https://example.com/smart-shoes"
+                });
+            }
+            
+            // Combine personalized with standard recommendations
+            const finalRecs = [...personalizedRecs];
+            
+            // Add standard recommendations to fill out the list (up to 3 total)
+            for (let i = 0; i < recommendations.length && finalRecs.length < 3; i++) {
+                finalRecs.push(recommendations[i]);
+            }
+            
+            // Display recommendations
+            const recList = document.getElementById('recommendationsList');
+            recList.innerHTML = '';
+            
+            finalRecs.forEach(rec => {
+                const recItem = document.createElement('div');
+                recItem.className = 'recommendation-item';
+                recItem.innerHTML = `
+                    <h3 class="recommendation-title">${rec.title}</h3>
+                    <p class="recommendation-description">${rec.description}</p>
+                    <a href="${rec.link}" class="product-link" target="_blank">Check it out <i class="fas fa-external-link-alt"></i></a>
+                `;
+                recList.appendChild(recItem);
+            });
+        }
+    </script>
+</body>
+</html>
