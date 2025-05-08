@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stitch & Style - Your Personal Fashion Advisor</title>
+    <!-- Import geometric sans-serif font -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #d4af37;
@@ -18,7 +21,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif !important; /* Force geometric sans-serif font */
         }
         
         body {
@@ -27,6 +30,7 @@
             line-height: 1.6;
             background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
             background-size: 30px 30px;
+            font-family: 'Poppins', sans-serif !important; /* Force body font */
         }
         
         .container {
@@ -46,11 +50,12 @@
         
         .logo {
             font-size: 2.5rem;
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
+            letter-spacing: 1px;
         }
         
         .logo img {
@@ -62,6 +67,8 @@
             font-size: 1.2rem;
             font-style: italic;
             color: var(--text-gold);
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
         
         main {
@@ -88,6 +95,8 @@
             margin-bottom: 20px;
             border-bottom: 2px solid var(--secondary);
             padding-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
         
         form {
@@ -103,7 +112,7 @@
         }
         
         label {
-            font-weight: bold;
+            font-weight: 500;
             font-size: 1.1rem;
             color: var(--text-gold);
         }
@@ -116,6 +125,7 @@
             border-radius: 5px;
             font-size: 1rem;
             transition: border-color 0.3s;
+            font-family: 'Poppins', sans-serif !important; /* Force input font */
         }
         
         input:focus, select:focus, textarea:focus {
@@ -130,12 +140,14 @@
             border: none;
             padding: 12px 24px;
             font-size: 1.1rem;
-            font-weight: bold;
+            font-weight: 600;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
             margin-top: 10px;
             align-self: flex-start;
+            letter-spacing: 0.5px;
+            font-family: 'Poppins', sans-serif !important; /* Force button font */
         }
         
         button:hover {
@@ -174,11 +186,13 @@
             font-size: 1.3rem;
             color: var(--primary);
             margin-bottom: 10px;
+            font-weight: 600;
         }
         
         .recommendation-description {
             margin-bottom: 15px;
             color: #cccccc;
+            font-weight: 300;
         }
         
         .product-link {
@@ -188,8 +202,9 @@
             text-decoration: none;
             padding: 8px 15px;
             border-radius: 5px;
-            font-weight: bold;
+            font-weight: 500;
             transition: background-color 0.3s, transform 0.2s;
+            letter-spacing: 0.5px;
         }
         
         .product-link:hover {
@@ -204,32 +219,124 @@
             padding: 20px 0;
             margin-top: 40px;
             border-top: 1px solid rgba(212, 175, 55, 0.3);
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
         
         .loading {
             display: none;
             text-align: center;
-            margin: 20px 0;
+            margin: 30px 0;
         }
         
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(212, 175, 55, 0.1);
-            border-top: 5px solid var(--primary);
+        /* New custom loading animation */
+        .stitch-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .stitch-text {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-gold);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .needle-container {
+            position: relative;
+            width: 150px;
+            height: 80px;
+        }
+        
+        .needle {
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #c0c0c0;
+            top: 50%;
+            left: 20px;
+            transform-origin: left center;
+            transform: rotate(45deg);
+            border-radius: 2px;
+        }
+        
+        .needle::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
+            background-color: #c0c0c0;
+            top: -2px;
+            left: -4px;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .needle::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 4px;
+            background-color: #c0c0c0;
+            right: -10px;
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+        
+        .thread {
+            position: absolute;
+            height: 2px;
+            background-color: var(--text-gold);
+            top: calc(50% + 1px);
+            left: 20px;
+            transform-origin: left center;
+            animation: stitching 2s linear infinite;
+            border-radius: 1px;
+        }
+        
+        @keyframes stitching {
+            0% {
+                width: 0;
+                transform: rotate(45deg);
+            }
+            20% {
+                width: 80px;
+                transform: rotate(45deg);
+            }
+            25% {
+                width: 80px;
+                transform: rotate(45deg);
+            }
+            45% {
+                width: 80px;
+                transform: rotate(45deg) translateY(-30px);
+            }
+            50% {
+                width: 80px;
+                transform: rotate(45deg) translateY(-30px);
+            }
+            70% {
+                width: 0;
+                transform: rotate(45deg) translateY(-30px);
+                left: 100px;
+            }
+            75% {
+                width: 0;
+                transform: rotate(45deg);
+                left: 20px;
+            }
+            100% {
+                width: 0;
+                transform: rotate(45deg);
+                left: 20px;
+            }
         }
         
         .error-message {
             color: #ff6b6b;
-            font-weight: bold;
+            font-weight: 500;
             display: none;
             margin: 10px 0;
         }
@@ -251,9 +358,16 @@
             .logo img {
                 height: 60px;
             }
+            
+            .stitch-text {
+                font-size: 1.2rem;
+            }
+            
+            .needle-container {
+                width: 120px;
+            }
         }
     </style>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -298,8 +412,13 @@
             </form>
             
             <div class="loading" id="loading">
-                <div class="loading-spinner"></div>
-                <p>Finding your perfect style matches...</p>
+                <div class="stitch-loading">
+                    <div class="stitch-text">Stitching up Your Style</div>
+                    <div class="needle-container">
+                        <div class="needle"></div>
+                        <div class="thread"></div>
+                    </div>
+                </div>
             </div>
             
             <div class="error-message" id="errorMessage">
@@ -337,17 +456,12 @@
                     title: "Midas Touch Sunglasses",
                     description: "Upgrade those basic shades to our gold-framed, amber-tinted luxury eyewear. They don't just block the sun; they transform it into your personal spotlight.",
                     link: "https://www.midas-sunglasses.com"
-                },
-                {
-                    title: "The Mermaid",
-                    description: "Swap that ordinary cover-up for our sparkly mermaid tail. Flowing like liquid gold as you walk along the shore, creating mesmerizing patterns in the sunlight.",
-                    link: "https://www.bellabliss.com/products/mermaid-wrap-costume?srsltid=AfmBOooAsEWXVHhbOP6Lbb2BhrIm_5eRdn3BX4_GgRXT0Epxp4IeCjoZ"
                 }
             ],
             office: [
                 {
                     title: "The Executive Statement Watch",
-                    description: "Replace that understated timepiece with our subtle yet commanding gold-accented chronograph. It whispers 'I value precision' while shouting 'I've arrived.'. Pure aura.",
+                    description: "Replace that understated timepiece with our subtle yet commanding gold-accented chronograph. It whispers 'I value precision' while shouting 'I've arrived.'",
                     link: "https://www.tourneau.com/executive-watches/?srsltid=AfmBOoo0ulKssN2M9AxCXhW98tvw3BHVSHfJ48YIohDNvhZNQLlIYUEm"
                 },
                 {
@@ -359,17 +473,12 @@
                     title: "The CEO's Secret Socks",
                     description: "Hide your ambition under those formal pants with our gold-threaded, cushioned luxury socks. Your feet deserve a corner office of their own.",
                     link: "https://www.zazzle.com/gold_faux_glitter_background_socks-256575969420339101?rf=238689132076650504&tc=Cj0KCQjw5ubABhDIARIsAHMighYh4oKgqOftEEDpK1yCSOFh5E6Z7kJSxdKC2n-wCazQHTzGyvklDfsaAjFzEALw_wcB%7C22234314689&z_ca=22234314689&z_ag=174579128323&z_adid=732859213875&z_devm=&z_dev=c&z_nw=g&z_mt=&z_lp=9061127&z_li=&z_tid=pla-2394187203582&z_plt=&z_fid=&z_kwt=&z_pl=&utm_term=PRODUCT_GROUP&utm_source=google&utm_medium=cpc&gad_source=1&gad_campaignid=22234314689&gbraid=0AAAAAD4EViEa5HlDlhiRfWwoem2Vc6d8H&gclid=Cj0KCQjw5ubABhDIARIsAHMighYh4oKgqOftEEDpK1yCSOFh5E6Z7kJSxdKC2n-wCazQHTzGyvklDfsaAjFzEALw_wcB"
-                },
-                {
-                    title: "The Boardroom Dominance Pen",
-                    description: "Replace that plastic ballpoint with our weighted gold fountain pen. When contracts need signing, nothing makes a statement like the sound of liquid gold on paper.",
-                    link: "https://www.amazon.com/Silver-Chrome-Fountain-Pen-Scriveiner/dp/B08BZQ3M1R/ref=asc_df_B08BZQ3M1R?mcid=d9a63fc00458311f9348289718094321&hvocijid=1449456452753595721-B08BZQ3M1R-&hvexpln=73&tag=hyprod-20&linkCode=df0&hvadid=738055595456&hvpos=&hvnetw=g&hvrand=1449456452753595721&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9061127&hvtargid=pla-2426394699034&hvsb=hilltop&th=1"
                 }
             ],
             date: [
                 {
                     title: "The Heartbreaker Cufflinks",
-                    description: "Trade those basic metal squares for our asymmetric saphire blue cufflinks. They catch the light with every gesture, ensuring all attention remains on you.",
+                    description: "Trade those basic metal squares for our asymmetric gold heart cufflinks. They catch the light with every gesture, ensuring all attention remains on you.",
                     link: "https://www.cjcharles.com/products/stephen-webster-heartbreaker-cufflinks?srsltid=AfmBOor-1iwFghfGEIw7cZdXvgkjYR9MK0_NoqoWeuARQBvGzC70XccR"
                 },
                 {
@@ -381,11 +490,6 @@
                     title: "The Second Date Guarantee Earrings",
                     description: "Replace those simple studs with our cascading gold geometric earrings. They frame your face in a golden glow that makes candlelight jealous.",
                     link: "https://www.shaneco.com/earrings/dangle-earrings/cascade-dangle-earrings-in-14k-yellow-and-white-gold/p/41080801?gclsrc=aw.ds&&utm_content=autoag0000x20481389236&gad_source=1&gad_campaignid=20471982885&gbraid=0AAAAADwlJthZ_M9cj4hjYt8kzBSHc3Zso&gclid=Cj0KCQjw5ubABhDIARIsAHMighZdrTKSJuuxslQWg2jPjnhA1sgN02Mhd5_syw6_Un0hNWIuFTa0YRgaAsIyEALw_wcB"
-                },
-                {
-                    title: "The Unforgettable Impression Belt",
-                    description: "Upgrade that plain leather belt with our subtle gold-buckled masterpiece. It's the detail they'll remember long after the night ends.",
-                    link: "https://shop.wwe.com/en/collectibles-and-memorabilia/wwe-undisputed-championship-commemorative-title-belt/d-2362895767+f-57992314219641+z-9-2285085528?utm_medium=cse&_s=GPA-ak19kv30-wwe-wweshop&sku=204937098&utm_campaign=21251926504_162320365112&gad_source=1&gad_campaignid=21251926504&gbraid=0AAAAADwsNmEUcyPSINeo-w03xd3lSOhRO&gclid=Cj0KCQjw5ubABhDIARIsAHMighZYblH0lAL4KLhE_ntJBFCoZ7-UvNC39m_ciKBHk_PPyxN1R3jAqCIaAjRbEALw_wcB"
                 }
             ],
             gym: [
@@ -403,11 +507,6 @@
                     title: "The Victory Lap Shoes",
                     description: "Swap those basic trainers for our performance-engineered running shoes with gold energy-return technology. They don't just support your feet—they celebrate them.",
                     link: "https://www.pleinsport.com/us/thunderstorm-genx-01/FABS-USC0337-PTE003N_0216.html?utm_source=google&utm_medium=cpc&utm_campaign=22347397403&gad_source=1&gad_campaignid=22347398606&gbraid=0AAAAADOg4GUxelH8TRhz8FiehTxJf77df&gclid=Cj0KCQjw5ubABhDIARIsAHMighbh_6sUORVmOsWgDE0BA3M_LRKXpo74aQf9sSZrrGul0AJMkmTmQ5oaAhuYEALw_wcB"
-                },
-                {
-                    title: "The Olympian's Duffel",
-                    description: "Replace that worn gym bag with our compartmentalized, gold-accented training duffel. Separate sections for clean and workout gear mean you'll never mix the two again.",
-                    link: "https://www.imprint5.com/custom-two-tone-sport-dueffel-backpack.html?ff=1&fp=19520&gad_source=1&gad_campaignid=1959470317&gbraid=0AAAAADlj_94n1ifq5KHqdUOU5yXO5vRGm&gclid=Cj0KCQjw5ubABhDIARIsAHMighbSl50b4ozuKnUOWsbAANNIUUGTg0BNB6nWO3WQyQGcFqikSspSM4waAvQHEALw_wcB"
                 }
             ],
             concert: [
@@ -425,11 +524,6 @@
                     title: "The VIP Access Crossbody",
                     description: "Replace that bulky bag with our sleek, RFID-protected gold chain crossbody. It keeps your essentials secure and your hands free for when the chorus hits.",
                     link: "https://www.zara.com/us/en/mini-crossbody-bag-p11211530.html?v1=417963103&utm_source=google&utm_medium=cpc&gad_source=1&gad_campaignid=20955886735&gbraid=0AAAAADqbk7YMo3fxcDpQd5Q5gEdWRo4EO&gclid=Cj0KCQjw5ubABhDIARIsAHMighZVl8BHEprGnFFiY3kHp7d2XzIjLJBX3sdnZYfPajIyhqmqriZ2WkEaAr3ZEALw_wcB"
-                },
-                {
-                    title: "The Encore Earpiece",
-                    description: "Protect your hearing in style with our gold-toned acoustic filtering earbuds. They reduce harmful frequencies while enhancing vocals—perfect for true music lovers.",
-                    link: "https://us.loopearplugs.com/products/experience?variant=46725700255977&utm_source=google&utm_medium=cpc&utm_id=19674497229&utm_campaign=&utm_content=&utm_term=&gadid=&cq_src=google_ads&cq_cmp=19674497229&cq_con=&cq_term=&cq_med=pla&cq_plac=&cq_net=x&cq_plt=gp&gad_source=1&gad_campaignid=19682433821&gbraid=0AAAAACj0PVwoljPHYAQX1JQDFEhmffgSn&gclid=Cj0KCQjw5ubABhDIARIsAHMighapd23bIAGopSuFtsiN0Q5-a6QrpoQKLmvChWKsYMpFZPF9FBGEoTkaAvO8EALw_wcB"
                 }
             ],
             wedding: [
@@ -447,17 +541,12 @@
                     title: "The Memory Maker Cuff Bracelet",
                     description: "Swap that simple jewelry for our adjustable gold cuff with subtle engraving. It elevates any outfit while remaining timeless in wedding photos you'll cherish forever.",
                     link: "https://tinytags.com/products/cuff?variant=40789730132083&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&srsltid=AfmBOorWqWHIjel1F0hXnbUDCrbOONwkmy8dbGlTtU0RlgyfY4q4_fZcrHQ&com_cvv=8fb3d522dc163aeadb66e08cd7450cbbdddc64c6cf2e8891f6d48747c6d56d2c"
-                },
-                {
-                    title: "The Celebration Clutch",
-                    description: "Upgrade that basic purse to our expandable gold-accented evening bag. It starts sleek for the ceremony but has hidden compartments for all the reception essentials.",
-                    link: "https://www.amazon.com/WIOLETA-Evening-Geometric-Metallic-Wedding/dp/B0CP72B4G3?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=A3T6KAZ8LCQWQM&gQT=1&th=1"
                 }
             ],
             hiking: [
                 {
                     title: "The Explorer's Compass Watch",
-                    description: "Replace that fitness tracker with our multifunctional timepiece featuring altimeter, barometer, and coal-accented bezel. Adventure awaits those who know where they're going.",
+                    description: "Replace that fitness tracker with our multifunctional timepiece featuring altimeter, barometer, and gold-accented bezel. Adventure awaits those who know where they're going.",
                     link: "https://www.amazon.com/Casio-Mudmaster-Shock-Resistant-Altimeter-GWG-B1000EC-1A/dp/B0DG18Y299"
                 },
                 {
@@ -469,11 +558,6 @@
                     title: "The Trail Blazer Boots",
                     description: "Swap those worn hikers for our reinforced, gold-hardwared all-terrain boots. The specially designed tread pattern leaves a distinctive mark, like your personal signature on the earth.",
                     link: "https://www.bootbarn.com/ariat-womens-fatbaby-western-boots---round-toe/2000409070.html?sku=71756700047&colorCode=700&glCountry=US&glCurrency=USD&gad_source=1&gad_campaignid=175310275&gbraid=0AAAAADt14tX_MoxFnEgeoA9p2In2Qj6cb&gclid=Cj0KCQjw5ubABhDIARIsAHMighb5yKQpyvCdg1JmvzI3jx5EmYoRZ5dz14hCB_FmhgV8qN1CfD9KRU8aAmNQEALw_wcB"
-                },
-                {
-                    title: "The Wilderness Warrior Jacket",
-                    description: "Replace that basic shell with our temperature-regulating, gold-accented technical jacket. Multiple hidden pockets mean your essentials are always within reach, never weighing you down.",
-                    link: "https://creatorink.com/products/authorized-signature-jacket-gold"
                 }
             ],
             interview: [
@@ -491,11 +575,6 @@
                     title: "The Perfect Answer Pen",
                     description: "Swap that borrowed ballpoint for our weighted gold-accented fountain pen. The smooth flow of ink mirrors the smooth flow of your thoughtful responses.",
                     link: "https://fprevolutionusa.com/products/fpr-tanoshii-fountain-pen-14k-gold-6-nib?variant=39318604742717&gad_source=1&gad_campaignid=12614683116&gbraid=0AAAAABghAbXGxGR5FSACafn_nbMzNiBgs&gclid=Cj0KCQjw5ubABhDIARIsAHMighb_YWjDrQsDxq7m87JkhMu7FQJLEvNzN0XeTK72QJYyy9_f1XcwPYMaAuqJEALw_wcB"
-                },
-                {
-                    title: "The Success Story Glasses",
-                    description: "Trade those basic frames for our subtle gold-reinforced eyewear. They don't just correct vision—they project vision, helping interviewers see your future at their company.",
-                    link: "https://artcraftsunglasses.com/products/ac421-aviator-55?variant=41955212394566&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gad_campaignid=22204647590&gbraid=0AAAAA-viHFyBXhK0y1r2qr2u-2_aE-af9&gclid=Cj0KCQjw5ubABhDIARIsAHMigha8Xijj-I27OkL8S5sFqNjyHPaqvXIE_5gVwNaHMvEIW-5AofB5BPAaArMVEALw_wcB"
                 }
             ],
             party: [
@@ -513,11 +592,6 @@
                     title: "The Last-to-Leave Shoes",
                     description: "Swap those uncomfortable heels for our specially designed party footwear with gold accents and hidden comfort technology. They look spectacular at hour one and feel spectacular at hour five.",
                     link: "https://www.net-a-porter.com/en-us/shop/product/gucci/shoes/mid-heel/lady-horsebit-metallic-textured-leather-sandals/46376663162894361?utm_source=google&utm_medium=cpc&utm_campaign=GOO%3ANAP%3AAM%3AUS%3ACA%3AENG%3ASEAU%3APLA%3ASLR%3AMXO%3ANEW%3AWN%3ASAINT-LAURENT%3ALV0%3ALV1%3ALV2%3AXXX%3A471%3ANEW-IN%3A&utm_id=22514585271&utm_term=3074457345629792695&vtp00=GOOGLE&vtp01=SEAU&vtp02=179575868776&vtp03=pla-2418799758908&vtp04=g&vtp05=c&vtp06=750708954683&vtp07=pla&gad_source=1&gad_campaignid=22514585271&gbraid=0AAAAADRhZnvlIolK8HC0aqL24ggi0A75V&gclid=Cj0KCQjw5ubABhDIARIsAHMighabY2OCtymR_Ct6CzUpTUxJsEw0NW20Rm6RXUWxnbM2T3f0wPQWlJAaAkMGEALw_wcB"
-                },
-                {
-                    title: "The Social Butterfly Pin",
-                    description: "Add our delicate gold butterfly lapel pin to any outfit. Its subtle movement with each gesture creates a mesmerizing effect that makes even simple stories seem captivating.",
-                    link: "https://stockpins.com/butterfly-lapel-pin/?sku=B06&gad_source=1&gad_campaignid=22108832793&gbraid=0AAAAAD_wnR4VrVkAcqndZTQBktp1wGfa5&gclid=Cj0KCQjw5ubABhDIARIsAHMighalfmYBrqhhTfq9wMgztyh3l9-jteHYZ1jI0YbUSo_RI1L8UkYsdtAaAmCKEALw_wcB"
                 }
             ],
             default: [
@@ -531,17 +605,37 @@
                     description: "Upgrade that season-specific outer layer to our all-weather, gold-hardwared convertible jacket. Removable sleeves, hidden hood, and adjustable insulation mean you're prepared for anything.",
                     link: "https://thursdayboots.com/products/mens-suede-trucker-jacket-tan-dusty?utm_source=google&utm_medium=g&utm_campaign=10844433599&utm_content=487275883181&nbt=nb%3Aadwords%3Ag%3A10844433599%3A115510152236%3A487275883181&nb_adtype=pla&nb_kwd=&nb_ti=pla-2418585488772&nb_mi=102426604&nb_pc=online&nb_pi=40667957362778&nb_ppi=2418585488772&nb_placement=&nb_li_ms=&nb_lp_ms=&nb_fii=&nb_ap=&nb_mt=&gad_source=1"
                 },
+                
                 {
                     title: "The Life Optimizer Bag",
                     description: "Swap that ordinary bag for our multifunctional carry-all with gold accents and customizable compartments. It adapts to your daily needs, whether that's gym, work, travel, or all three.",
                     link: "https://www.calpaktravel.com/products/luka-large-duffel/gold?tw_source=google&tw_adid=&tw_campaign=21848217006&utm_source=google&utm_medium=paid&utm_campaign=21848217006&utm_content=&utm_term=&gadid=&nbt=nb%3Aadwords%3Ax%3A21848217006%3A%3A&nb_adtype=pla_with_promotion&nb_kwd=&nb_ti=&nb_mi=118917827&nb_pc=online&nb_pi=shopify_US_7046835175482_40771046244410&nb_ppi=&nb_placement=&nb_li_ms=&nb_lp_ms=&nb_fii=&nb_ap=&nb_mt=&tw_source=google&tw_adid=&tw_campaign=21848217006&gad_source=1&gad_campaignid=21854733341&gbraid=0AAAAADHnXaG7ZAbHS0588r1zzzSYMS0jE&gclid=Cj0KCQjw5ubABhDIARIsAHMighaepmRC90ow2WmU53pSKu_Zflx03amJrkR5N0S3yVvW9f4E5W1ULXMaAuDDEALw_wcB"
-                },
-                {
-                    title: "The Identity Definer Bracelet",
-                    description: "Add our understated gold bangle with hidden personalization to your collection. The exterior remains elegantly minimal while the interior carries a message meaningful only to you.",
-                    link: "https://www.sarraf.com/products/14k-yellow-gold-vikings-bangle-bracelet-6-5.html?sku=14KY-HVB07-55&gad_source=1&gad_campaignid=334753336&gbraid=0AAAAAD_unFaZUKWbxOv4tIQBIT_GvX0Kq&gclid=Cj0KCQjw5ubABhDIARIsAHMighYVDS5y9fQiR2aXhHcrngV4BFHjISm-78cfZcun-Zk-mYL6e-4O0PAaAv7xEALw_wcB"
                 }
             ]
+        };
+
+        // Personalized recommendation items
+        const personalizedItems = {
+            pants: {
+                title: "The Golden Thread Trousers",
+                description: "We noticed you're wearing pants/jeans! Elevate your look with our specially designed bottoms featuring subtle gold threading and premium comfort technology.",
+                link: "https://www.walmart.com/ip/YYDGH-Shiny-Metallic-Pants-for-Women-Elastic-High-Waist-Wide-Leg-Pants-70s-Disco-Dance-Party-Trousers-with-Pockets-Gold-Gold/1005642992"
+            },
+            shirt: {
+                title: "The Midas Touch Top",
+                description: "Upgrade that shirt with our black and gold accent top that adapts to your body temperature and complements any atmosphere with subtle metallic highlights!",
+                link: "https://www.macys.com/shop/featured/black-and-gold-tops"
+            },
+            shoes: {
+                title: "The Golden Path Footwear",
+                description: "Those shoes are fine, but our black footwear with gold accents feature variable-terrain soles that automatically optimize for any surface you encounter!",
+                link: "https://www.golfgalaxy.com/p/air-jordan-i-high-g-mens-golf-shoes-24jdnmj1hghgblkglgsh/24jdnmj1hghgblkglgsh?sku=27058005&camp=CSE:GGXY_92700080077241020_PLA_pla-2302194772556&gclsrc=aw.ds&gad_source=1&gad_campaignid=21251805722&gbraid=0AAAAADrMVTqpT_Mc_Gm7NNicSu8rV9epu&gclid=CjwKCAjwiezABhBZEiwAEbTPGJ5jvaKTzU0rAuysSe4lOEVuFubsFF4-BNNTgtR9Zdjdd6_wVCjeRBoCuVsQAvD_BwE"
+            },
+            watch: {
+                title: "The Timeless Treasure Chronograph",
+                description: "We noticed your watch! Elevate your timekeeping with our black and gold masterpiece that not only tells time but tells a story about your impeccable taste.",
+                link: "https://www.michaelkors.com/oversized-everest-gold-tone-and-silicone-watch/MKO1162.html?skuId=648367402&colorExplode=true&source=googleshopping&ecid=MKC_PLA_OUTLET_GG_X_US_EN_OUTLET_X_PMAX_20304073801_pla_with_promotion_c_online_648367402&utm_source=google&utm_medium=cpc&adpos=&scid=scplp648367402&sc_intid=648367402&gclsrc=aw.ds&gad_source=1&gad_campaignid=19784344489&gbraid=0AAAAADm3-A8RhJbAHgbAaHXojukzaw4Bs&gclid=CjwKCAjwiezABhBZEiwAEbTPGLvrwuZqezAo96ywIEjbImVStPFIk8lqEZlr7R_4MhANt03qazLyvxoC3WQQAvD_BwE"
+            }
         };
 
         document.getElementById('styleForm').addEventListener('submit', function(e) {
@@ -574,7 +668,7 @@
                 
                 // Scroll to recommendations
                 document.getElementById('recommendations').scrollIntoView({ behavior: 'smooth' });
-            }, 1500);
+            }, 3000);  // Increased time to better showcase the animation
         });
         
         function generateRecommendations(destination, currentOutfit, vibe) {
@@ -617,36 +711,20 @@
             let personalizedRecs = [];
             
             // Look for specific items in the outfit description
-            if (outfitLower.includes('jeans') || outfitLower.includes('pants')) {
-                personalizedRecs.push({
-                    title: "The Golden Thread Trousers",
-                    description: `We noticed you're wearing pants/jeans! Elevate your look with our specially designed ${category}-optimized bottoms featuring subtle gold threading and premium comfort technology.`,
-                    link: "https://www.sergiotacchini.com/products/spazio-banda-mesh-short-golden-haze?variant=41098034774070"
-                });
+            if (outfitLower.includes('jeans') || outfitLower.includes('pants') || outfitLower.includes('trouser') || outfitLower.includes('slacks')) {
+                personalizedRecs.push(personalizedItems.pants);
             }
             
-            if (outfitLower.includes('t-shirt') || outfitLower.includes('shirt') || outfitLower.includes('top')) {
-                personalizedRecs.push({
-                    title: "The Midas Touch Top",
-                    description: `Upgrade that shirt with our black and gold accent top that adapts to your body temperature and complements the ${category} atmosphere with subtle metallic highlights!`,
-                    link: "https://barongworld.com/products/black-short-sleeves-barong-edward-jv111?currency=USD&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping&stkn=026a4fd5c914&gad_source=1&gad_campaignid=12001088813&gbraid=0AAAAABu6g1WcmcJfgNuGfWXBHC9JQ5X6W&gclid=Cj0KCQjw5ubABhDIARIsAHMighZV3cPEMbr3j2bHnRKp2_JYmrVzOaaReyBCXars0IwlVLRuxEvimMsaAl7_EALw_wcB"
-                });
+            if (outfitLower.includes('t-shirt') || outfitLower.includes('shirt') || outfitLower.includes('top') || outfitLower.includes('blouse') || outfitLower.includes('sweater')) {
+                personalizedRecs.push(personalizedItems.shirt);
             }
             
-            if (outfitLower.includes('sneaker') || outfitLower.includes('shoe') || outfitLower.includes('boot')) {
-                personalizedRecs.push({
-                    title: "The Golden Path Footwear",
-                    description: `Those shoes are fine, but our black and gold accents wirh variable-terrain soles that automatically optimize for any ${category} surface you encounter!`,
-                    link: "https://fit-boots.com/product/fit-boots-x-bound-black-gold-the-newest-premium-rebound-boots/?attribute_pa_size=small&attribute_pa_weight=100-150-lbs-45-70-kg&stkn=e8ef08dcfa9c&utm_medium=cpc&utm_source=google&utm_campaign=Google+Shopping&tw_source=google&tw_adid=738317906534&tw_campaign=22323823410&gad_source=1&gad_campaignid=22323823410&gbraid=0AAAAApTjhx02hpiY3m3JWT6cuHT7iuqsU&gclid=Cj0KCQjw5ubABhDIARIsAHMighYhvHgIdkhe8_9VlmkkWGV5Szn_WYgGMJuWnfTzeqlU6rJOijEKceMaAtZpEALw_wcB&ph=520e08a63daa08ffebfa06f6"
-                });
+            if (outfitLower.includes('sneaker') || outfitLower.includes('shoe') || outfitLower.includes('boot') || outfitLower.includes('heel') || outfitLower.includes('sandal')) {
+                personalizedRecs.push(personalizedItems.shoes);
             }
             
             if (outfitLower.includes('watch') || outfitLower.includes('timepiece')) {
-                personalizedRecs.push({
-                    title: "The Timeless Treasure Chronograph",
-                    description: `We noticed your watch! Elevate your timekeeping with our black and gold masterpiece that not only tells time but tells a story about your impeccable taste.`,
-                    link: "https://www.hublot.com/en-us/watches/classic-fusion/classic-fusion-chronograph-yellow-gold-42-mm?utm_source=google&utm_medium=cpc&utm_campaign=google_shopping_US_EN&utm_content=541.VX.1130.RX&gad_source=1&gad_campaignid=21684063029&gbraid=0AAAAAD9sFwG9wxjHGRT7bzUA8y5vdcImd&gclid=Cj0KCQjw5ubABhDIARIsAHMighafLp7mNKF6bTQjopMFP4fs2If-0xCURAe2tQuqkSIx3scCaHAsaccaAtWNEALw_wcB"
-                });
+                personalizedRecs.push(personalizedItems.watch);
             }
             
             // Combine personalized with standard recommendations
