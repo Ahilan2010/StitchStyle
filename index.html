@@ -229,7 +229,7 @@
             margin: 30px 0;
         }
         
-        /* New custom loading animation */
+        /* Custom stitching animation */
         .stitch-loading {
             display: flex;
             flex-direction: column;
@@ -635,6 +635,31 @@
                 title: "The Timeless Treasure Chronograph",
                 description: "We noticed your watch! Elevate your timekeeping with our black and gold masterpiece that not only tells time but tells a story about your impeccable taste.",
                 link: "https://www.michaelkors.com/oversized-everest-gold-tone-and-silicone-watch/MKO1162.html?skuId=648367402&colorExplode=true&source=googleshopping&ecid=MKC_PLA_OUTLET_GG_X_US_EN_OUTLET_X_PMAX_20304073801_pla_with_promotion_c_online_648367402&utm_source=google&utm_medium=cpc&adpos=&scid=scplp648367402&sc_intid=648367402&gclsrc=aw.ds&gad_source=1&gad_campaignid=19784344489&gbraid=0AAAAADm3-A8RhJbAHgbAaHXojukzaw4Bs&gclid=CjwKCAjwiezABhBZEiwAEbTPGLvrwuZqezAo96ywIEjbImVStPFIk8lqEZlr7R_4MhANt03qazLyvxoC3WQQAvD_BwE"
+            },
+            hat: {
+                title: "The Crown Jewel Hat",
+                description: "That hat is a good start, but our premium black headwear with gold-threaded detailing transforms a simple accessory into a statement of royalty and taste.",
+                link: "https://store.niknak.shop/products/finesse-creations-premier-ladies-boutique-black-hat-w-gold-detail-6-7-8-55cm?variant=41079015309448&_gsid=znJRNdXL4mDR&utm_source=chatgpt.com"
+            },
+            necklace: {
+                title: "The Golden Thread Necklace",
+                description: "We spotted your necklace! Our artisanal gold-link design with minimalist pendant creates a cascading effect that draws the eye exactly where you want it.",
+                link: "https://ashleighbergman.com/products/mini-flat-mariner-gold-link-chain-necklace?variant=41308887711807&_gsid=7gtkuLJ35LYv&utm_source=chatgpt.com"
+            },
+            ring: {
+                title: "The Whisper of Gold Ring",
+                description: "That ring catches the eye, but our signature black onyx and gold band speaks volumes without saying a word. It's subtle power for your fingertips.",
+                link: "https://earth2skyjewelry.com/products/black-onyx-18kt-gold-two-tone-ring?variant=45095647445269&country=US&currency=USD&utm_source=chatgpt.com"
+            },
+            glasses: {
+                title: "The Golden Vision Frames",
+                description: "Those glasses work, but our matte black frames with gold temple accents transform your eyewear from medical necessity to design philosophy.",
+                link: "https://blackoptical.com/products/cassini-brushed-white-gold-matte-white-gold?variant=39872693502033&country=US&currency=USD&utm_medium=product_sync&utm_content=sag_organic&utm_campaign=sag_organic&srsltid=AfmBOopmELincGyD1WfBJZOTkpID5Gg1wJqY3lnjqfigm_fRK2RFZK4NSio&utm_source=chatgpt.com"
+            },
+            earrings: {
+                title: "The Golden Cascade Earrings",
+                description: "Your earrings are nice, but our geometric gold drop earrings create visual movement with every turn of your head. Subtle but magnetic, like you.",
+                link: "https://fireandbrilliance.com/products/geometric-drop-earrings?variant=32279052943430&_gsid=ze3G6SewQUKo&utm_source=chatgpt.com"
             }
         };
 
@@ -658,7 +683,7 @@
             document.getElementById('loading').style.display = 'block';
             document.getElementById('recommendations').style.display = 'none';
             
-            // Simulate processing time
+            // Simulate processing time (3 seconds to show off the stitching animation)
             setTimeout(() => {
                 generateRecommendations(destination, currentOutfit, vibe);
                 
@@ -668,7 +693,7 @@
                 
                 // Scroll to recommendations
                 document.getElementById('recommendations').scrollIntoView({ behavior: 'smooth' });
-            }, 3000);  // Increased time to better showcase the animation
+            }, 3000);
         });
         
         function generateRecommendations(destination, currentOutfit, vibe) {
@@ -710,21 +735,41 @@
             const outfitLower = currentOutfit.toLowerCase();
             let personalizedRecs = [];
             
-            // Look for specific items in the outfit description
+            // Check for clothing items in description
             if (outfitLower.includes('jeans') || outfitLower.includes('pants') || outfitLower.includes('trouser') || outfitLower.includes('slacks')) {
                 personalizedRecs.push(personalizedItems.pants);
             }
             
-            if (outfitLower.includes('t-shirt') || outfitLower.includes('shirt') || outfitLower.includes('top') || outfitLower.includes('blouse') || outfitLower.includes('sweater')) {
+            if (outfitLower.includes('t-shirt') || outfitLower.includes('shirt') || outfitLower.includes('top') || outfitLower.includes('blouse')) {
                 personalizedRecs.push(personalizedItems.shirt);
             }
             
-            if (outfitLower.includes('sneaker') || outfitLower.includes('shoe') || outfitLower.includes('boot') || outfitLower.includes('heel') || outfitLower.includes('sandal')) {
+            if (outfitLower.includes('sneaker') || outfitLower.includes('shoe') || outfitLower.includes('boot') || outfitLower.includes('heel')) {
                 personalizedRecs.push(personalizedItems.shoes);
             }
-            
+
             if (outfitLower.includes('watch') || outfitLower.includes('timepiece')) {
                 personalizedRecs.push(personalizedItems.watch);
+            }
+            
+            if (outfitLower.includes('hat') || outfitLower.includes('cap') || outfitLower.includes('beanie') || outfitLower.includes('fedora')) {
+                personalizedRecs.push(personalizedItems.hat);
+            }
+            
+            if (outfitLower.includes('necklace') || outfitLower.includes('pendant') || outfitLower.includes('chain')) {
+                personalizedRecs.push(personalizedItems.necklace);
+            }
+            
+            if (outfitLower.includes('ring') || outfitLower.includes('band')) {
+                personalizedRecs.push(personalizedItems.ring);
+            }
+            
+            if (outfitLower.includes('glasses') || outfitLower.includes('eyewear') || outfitLower.includes('spectacles')) {
+                personalizedRecs.push(personalizedItems.glasses);
+            }
+            
+            if (outfitLower.includes('earring') || outfitLower.includes('stud') || outfitLower.includes('hoop')) {
+                personalizedRecs.push(personalizedItems.earrings);
             }
             
             // Combine personalized with standard recommendations
