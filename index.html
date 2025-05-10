@@ -212,6 +212,14 @@
             transform: translateY(-2px);
         }
         
+        /* Updated product link with external link icon */
+        .product-link .fa-external-link-alt {
+            transform: rotate(45deg);
+            position: relative;
+            top: -2px;
+            font-size: 0.9em;
+        }
+        
         footer {
             background-color: rgba(18, 18, 18, 0.9);
             color: var(--text-gold);
@@ -341,6 +349,32 @@
             margin: 10px 0;
         }
         
+        /* One More Time button */
+        .reset-button-container {
+            display: none; /* Initially hidden */
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .reset-button {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            letter-spacing: 0.5px;
+            font-family: 'Poppins', sans-serif !important;
+        }
+        
+        .reset-button:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
         /* Responsive design */
         @media (max-width: 768px) {
             .container {
@@ -430,6 +464,10 @@
             <h2>Your Style Recommendations</h2>
             <div id="recommendationsList"></div>
         </div>
+        
+        <div class="reset-button-container" id="resetButtonContainer">
+            <button class="reset-button" id="resetButton">One More Time?</button>
+        </div>
     </main>
     
     <footer>
@@ -445,17 +483,17 @@
                 {
                     title: "The Golden Sand Sarong",
                     description: "Replace those ordinary beach shorts with our metallic gold-threaded sarong. It shimmers in the sunlight like the ocean at sunset, turning heads with every breeze.",
-                    link: "https://saronghut.com/en-us/products/golden-sand-cotton-sarong?srsltid=AfmBOorYH3Gyim9EbEk_nK4bryfk1b-TnjNAjdUG-O9X-Uf6a3YbD-oP"
+                    link: "https://saronghut.com/en-us/products/golden-sand-cotton-sarong"
                 },
                 {
                     title: "The Poseidon Pendant",
                     description: "Trade that simple necklace for our gold-dipped trident pendant. It's not just a statement piece—it's a conversation with the sea gods themselves.",
-                    link: "https://www.marcozo.com/collections/poseidon-necklaces?srsltid=AfmBOooMxGz_w0ZbBZ4l14e9QCvMAAoPjNIrv42bRav_KkuCfC06MtTS"
+                    link: " https://www.marcozo.com/collections/poseidon-necklaces"
                 },
                 {
                     title: "Midas Touch Sunglasses",
                     description: "Upgrade those basic shades to our gold-framed, amber-tinted luxury eyewear. They don't just block the sun; they transform it into your personal spotlight.",
-                    link: "https://www.midas-sunglasses.com"
+                    link: " https://www.midas-sunglasses.com"
                 }
             ],
             office: [
@@ -472,109 +510,110 @@
                 {
                     title: "The CEO's Secret Socks",
                     description: "Hide your ambition under those formal pants with our gold-threaded, cushioned luxury socks. Your feet deserve a corner office of their own.",
-                    link: "https://www.zazzle.com/gold_faux_glitter_background_socks-256575969420339101?rf=238689132076650504&tc=Cj0KCQjw5ubABhDIARIsAHMighYh4oKgqOftEEDpK1yCSOFh5E6Z7kJSxdKC2n-wCazQHTzGyvklDfsaAjFzEALw_wcB%7C22234314689&z_ca=22234314689&z_ag=174579128323&z_adid=732859213875&z_devm=&z_dev=c&z_nw=g&z_mt=&z_lp=9061127&z_li=&z_tid=pla-2394187203582&z_plt=&z_fid=&z_kwt=&z_pl=&utm_term=PRODUCT_GROUP&utm_source=google&utm_medium=cpc&gad_source=1&gad_campaignid=22234314689&gbraid=0AAAAAD4EViEa5HlDlhiRfWwoem2Vc6d8H&gclid=Cj0KCQjw5ubABhDIARIsAHMighYh4oKgqOftEEDpK1yCSOFh5E6Z7kJSxdKC2n-wCazQHTzGyvklDfsaAjFzEALw_wcB"
+                    link: "https://www.zazzle.com/gold_faux_glitter_background_socks-256575969420339101"
                 }
             ],
+            
             date: [
                 {
                     title: "The Heartbreaker Cufflinks",
                     description: "Trade those basic metal squares for our asymmetric gold heart cufflinks. They catch the light with every gesture, ensuring all attention remains on you.",
-                    link: "https://www.cjcharles.com/products/stephen-webster-heartbreaker-cufflinks?srsltid=AfmBOor-1iwFghfGEIw7cZdXvgkjYR9MK0_NoqoWeuARQBvGzC70XccR"
+                    link: "https://www.cjcharles.com/products/stephen-webster-heartbreaker-cufflinks"
                 },
                 {
                     title: "The Chemistry Booster Cologne",
                     description: "Swap that everyday scent for our amber and gold-flecked cologne. The bottle looks impressive on your counter, but the reaction it gets will be even better.",
-                    link: "https://www.chanel.com/us/fragrance/p/122300/sycomore-les-exclusifs-de-chanel-eau-de-parfum/?gclsrc=aw.ds&gad_source=1&gad_campaignid=339763049&gclid=Cj0KCQjw5ubABhDIARIsAHMighbjFDPSRH9wQvNmO3u_OO862NXGdyB-TR9PydjT80u0Ew8HFR3bfS8aAh37EALw_wcB"
+                    link: "https://www.chanel.com/us/fragrance/p/122300/sycomore-les-exclusifs-de-chanel-eau-de-parfum"
                 },
                 {
                     title: "The Second Date Guarantee Earrings",
                     description: "Replace those simple studs with our cascading gold geometric earrings. They frame your face in a golden glow that makes candlelight jealous.",
-                    link: "https://www.shaneco.com/earrings/dangle-earrings/cascade-dangle-earrings-in-14k-yellow-and-white-gold/p/41080801?gclsrc=aw.ds&&utm_content=autoag0000x20481389236&gad_source=1&gad_campaignid=20471982885&gbraid=0AAAAADwlJthZ_M9cj4hjYt8kzBSHc3Zso&gclid=Cj0KCQjw5ubABhDIARIsAHMighZdrTKSJuuxslQWg2jPjnhA1sgN02Mhd5_syw6_Un0hNWIuFTa0YRgaAsIyEALw_wcB"
+                    link: "https://www.shaneco.com/earrings/dangle-earrings/cascade-dangle-earrings-in-14k-yellow-and-white-gold/p/41080801"
                 }
             ],
             gym: [
                 {
                     title: "The Gold Standard Compression Shirt",
                     description: "Replace that sweaty cotton tee with our moisture-wicking, gold-patterned compression shirt. It doesn't just make you look good—it actively helps you perform better.",
-                    link: "https://www.rashgrd.com/products/aquaman-arthur-curry-tattoo-short-sleeve-compression-rash-guard?currency=USD&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping&stkn=398b1dacdaa1&gad_source=1&gad_campaignid=1671136922&gbraid=0AAAAAC8eK5lL3umBcAN9Er4NNVuYBFBwm&gclid=Cj0KCQjw5ubABhDIARIsAHMighaNkaYKJOEmp0hFhjbAzJsDavffsM721h5cCf_iOluwm8y-sYm3WXIaAnppEALw_wcB"
+                    link: "https://www.rashgrd.com/products/aquaman-arthur-curry-tattoo-short-sleeve-compression-rash-guard"
                 },
                 {
                     title: "The Champion's Water Bottle",
                     description: "Upgrade that plastic bottle to our vacuum-sealed, gold-accented hydration vessel. It keeps cold drinks cold for 24 hours—about as long as people will be talking about your workout.",
-                    link: "https://www.4customize.com/product/custom-16oz-stainless-steel-water-bottle/?attribute_pa_color=gold&gad_source=1&gad_campaignid=18479806274&gbraid=0AAAAABUh0pVvH5Bha8XdI0joYRZyUOoH8&gclid=Cj0KCQjw5ubABhDIARIsAHMighaOYKigMLf03wWMVVb2t-dbNaeKQBF86vkBfZ4YDGpBofPTjkqA6MoaAkr5EALw_wcB"
+                    link: "https://www.4customize.com/product/custom-16oz-stainless-steel-water-bottle/?attribute_pa_color=gold"
                 },
                 {
                     title: "The Victory Lap Shoes",
                     description: "Swap those basic trainers for our performance-engineered running shoes with gold energy-return technology. They don't just support your feet—they celebrate them.",
-                    link: "https://www.pleinsport.com/us/thunderstorm-genx-01/FABS-USC0337-PTE003N_0216.html?utm_source=google&utm_medium=cpc&utm_campaign=22347397403&gad_source=1&gad_campaignid=22347398606&gbraid=0AAAAADOg4GUxelH8TRhz8FiehTxJf77df&gclid=Cj0KCQjw5ubABhDIARIsAHMighbh_6sUORVmOsWgDE0BA3M_LRKXpo74aQf9sSZrrGul0AJMkmTmQ5oaAhuYEALw_wcB"
+                    link: "https://www.pleinsport.com/us/thunderstorm-genx-01/FABS-USC0337-PTE003N_0216.html"
                 }
             ],
             concert: [
                 {
                     title: "The Spotlight Stealer Jacket",
                     description: "Trade that plain jacket for our subtle gold-flecked, light-reactive outerwear. It captures and amplifies stage lights, making you the second-most photographed entity in the venue.",
-                    link: "https://rengglistudio.com/products/foil-leather-jacket?variant=49410802549032&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gad_campaignid=22351423677&gbraid=0AAAAA9gvo7e2p0soSRTqxkkQ76iCTuHvS&gclid=Cj0KCQjw5ubABhDIARIsAHMighb3GIpuslW2mupnSEOkrZ01kNpsxofg0y6yq9lVv1k7xD8nCXe_39QaAsgPEALw_wcB"
+                    link: "https://rengglistudio.com/products/foil-leather-jacket?variant=49410802549032"
                 },
                 {
                     title: "The Bass Enhancer Boots",
                     description: "Upgrade those comfortable shoes to our specially designed concert boots with gold hardware. The elevated platform lets you see over the crowd while the reinforced sole lets you feel every beat.",
-                    link: "https://www.bootbarn.com/idyllwind-womens-showdown-western-boots---snip-toe/2000374770.html?sku=55199000023&colorCode=001&glCountry=US&glCurrency=USD&gad_source=1&gad_campaignid=175310275&gbraid=0AAAAADt14tX_MoxFnEgeoA9p2In2Qj6cb&gclid=Cj0KCQjw5ubABhDIARIsAHMighYwBV8wCODuFjd1tPBWiyVt3VbNecCpnevvHJ2jQDwZQpwxwpb_mrcaAuEeEALw_wcB"
+                    link: "https://www.bootbarn.com/idyllwind-womens-showdown-western-boots---snip-toe/2000374770.html"
                 },
                 {
                     title: "The VIP Access Crossbody",
                     description: "Replace that bulky bag with our sleek, RFID-protected gold chain crossbody. It keeps your essentials secure and your hands free for when the chorus hits.",
-                    link: "https://www.zara.com/us/en/mini-crossbody-bag-p11211530.html?v1=417963103&utm_source=google&utm_medium=cpc&gad_source=1&gad_campaignid=20955886735&gbraid=0AAAAADqbk7YMo3fxcDpQd5Q5gEdWRo4EO&gclid=Cj0KCQjw5ubABhDIARIsAHMighZVl8BHEprGnFFiY3kHp7d2XzIjLJBX3sdnZYfPajIyhqmqriZ2WkEaAr3ZEALw_wcB"
+                    link: "https://www.zara.com/us/en/mini-crossbody-bag-p11211530.html?v1=417963103"
                 }
             ],
             wedding: [
                 {
                     title: "The Toast Master Tie",
                     description: "Upgrade that rental tie to our champagne-gold, subtly patterned silk masterpiece. It photographs beautifully and won't show a drop if someone gets emotional during speeches.",
-                    link: "https://www.sarraf.com/products/14k-gold-necktie-shape-tie-bar-with-checker-pattern.html?sku=IA45-23&gad_source=1&gad_campaignid=334753336&gbraid=0AAAAAD_unFaZUKWbxOv4tIQBIT_GvX0Kq&gclid=Cj0KCQjw5ubABhDIARIsAHMighY8Yp_hu9i_5p2Czy14_GbTrBiEiJPJq502zMpfEVcar4OijHBV1zQaAsM0EALw_wcB"
+                    link: " https://www.sarraf.com/products/14k-gold-necktie-shape-tie-bar-with-checker-pattern.html"
                 },
                 {
                     title: "The Ceremony-to-Dancing Shoes",
                     description: "Replace those stiff dress shoes with our specially designed formal footwear featuring gold accents and hidden comfort technology. They look perfect in photos and feel perfect on the dance floor.",
-                    link: "https://www.superglamourous.it/products/harley-yamka-black-slippers?variant=63902023695&sfdr_ptcid=37140_4_590927443&sfdr_hash=9e994d8a1d4d61e63ef7c628822ea0fc&tw_source=google&tw_adid=&tw_campaign=21391717157&gad_source=1&gad_campaignid=21385390230&gbraid=0AAAAADlyzl6_o1SlBKORpPZmI4mUBiUk4&gclid=Cj0KCQjw5ubABhDIARIsAHMighY0X5f7DwWLqqUnPnNn_cYSI6kOlXT6k09SI_JIDuQRhZZJi6V6kSoaAumlEALw_wcB"
+                    link: "https://www.superglamourous.it/products/harley-yamka-black-slippers?variant=63902023695"
                 },
                 {
                     title: "The Memory Maker Cuff Bracelet",
                     description: "Swap that simple jewelry for our adjustable gold cuff with subtle engraving. It elevates any outfit while remaining timeless in wedding photos you'll cherish forever.",
-                    link: "https://tinytags.com/products/cuff?variant=40789730132083&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&srsltid=AfmBOorWqWHIjel1F0hXnbUDCrbOONwkmy8dbGlTtU0RlgyfY4q4_fZcrHQ&com_cvv=8fb3d522dc163aeadb66e08cd7450cbbdddc64c6cf2e8891f6d48747c6d56d2c"
+                    link: " https://tinytags.com/products/cuff?variant=40789730132083"
                 }
             ],
             hiking: [
                 {
                     title: "The Explorer's Compass Watch",
-                    description: "Replace that fitness tracker with our multifunctional timepiece featuring altimeter, barometer, and gold-accented bezel. Adventure awaits those who know where they're going.",
+                    description: "Replace that fitness tracker with our multifunctional timepiece featuring altimeter, barometer, and coal-accented bezel. Adventure awaits those who know where they're going.",
                     link: "https://www.amazon.com/Casio-Mudmaster-Shock-Resistant-Altimeter-GWG-B1000EC-1A/dp/B0DG18Y299"
                 },
                 {
                     title: "The Summit Seeker Backpack",
                     description: "Upgrade that basic daypack to our ergonomically designed carrier with gold hardware and waterproof compartments. The wilderness deserves to be explored in style.",
-                    link: "https://www.rriveter.com/products/corbin-khaki-nylon-brown-leather?variant=47826996363563&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&tw_source=google&tw_adid=740636622934&tw_campaign=22366789679&gad_source=1&gad_campaignid=22366789679&gbraid=0AAAAADfJYP8WIn242M55SF3f6nXmehkOJ&gclid=Cj0KCQjw5ubABhDIARIsAHMighbTD-ZYFQ3L31pFeIIYDpVJ5opO1lL6Mz8C75_E2t7sbEljmzsm2lAaAlgbEALw_wcB"
+                    link: "https://www.rriveter.com/products/corbin-khaki-nylon-brown-leather?variant=47826996363563"
                 },
                 {
                     title: "The Trail Blazer Boots",
                     description: "Swap those worn hikers for our reinforced, gold-hardwared all-terrain boots. The specially designed tread pattern leaves a distinctive mark, like your personal signature on the earth.",
-                    link: "https://www.bootbarn.com/ariat-womens-fatbaby-western-boots---round-toe/2000409070.html?sku=71756700047&colorCode=700&glCountry=US&glCurrency=USD&gad_source=1&gad_campaignid=175310275&gbraid=0AAAAADt14tX_MoxFnEgeoA9p2In2Qj6cb&gclid=Cj0KCQjw5ubABhDIARIsAHMighb5yKQpyvCdg1JmvzI3jx5EmYoRZ5dz14hCB_FmhgV8qN1CfD9KRU8aAmNQEALw_wcB"
+                    link: "https://www.bootbarn.com/ariat-womens-fatbaby-western-boots---round-toe/2000409070.html"
                 }
             ],
             interview: [
                 {
                     title: "The First Impression Folio",
                     description: "Upgrade that manila folder to our black leather portfolio with subtle gold corner reinforcements. It protects your resume physically while elevating it symbolically.",
-                    link: "https://furniquk.com/products/womens-leather-jacket-10?variant=46184629534932&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gad_campaignid=22483875803&gbraid=0AAAAA9mAm6sdMTcj87IDuRSt8U25ne-IT&gclid=Cj0KCQjw5ubABhDIARIsAHMighZ6c1dkpCqSLEYlZzRCcJJOk0zEVG3GwSEikCo_RX_TdQ2KzxzEg4kaAuaOEALw_wcB"
+                    link: " https://furniquk.com/products/womens-leather-jacket-10?variant=46184629534932"
                 },
                 {
                     title: "The Confidence Catalyst Watch",
                     description: "Replace that everyday timepiece with our minimalist black and gold watch. A quick glance at your wrist doesn't just tell time—it reminds you of your value.",
-                    link: "https://rosefield.com/products/octagon-xs-black-gold?utm_medium=cpc&utm_source=google&utm_campaign=mi_ao&utm_term=22470394781&utm_content=shopping_generic_watches&gad_source=1&gad_campaignid=22470394781&gbraid=0AAAAADGx9iuD-ecZU2bpfJT81AOARn-eU&gclid=Cj0KCQjw5ubABhDIARIsAHMighZatloRAqHGS54OTa6R-YhBP8hb-oLfL3WiSI0SMSKwy8iztJM9K1gaAtFOEALw_wcB"
+                    link: "https://rosefield.com/products/octagon-xs-black-gold"
                 },
                 {
                     title: "The Perfect Answer Pen",
                     description: "Swap that borrowed ballpoint for our weighted gold-accented fountain pen. The smooth flow of ink mirrors the smooth flow of your thoughtful responses.",
-                    link: "https://fprevolutionusa.com/products/fpr-tanoshii-fountain-pen-14k-gold-6-nib?variant=39318604742717&gad_source=1&gad_campaignid=12614683116&gbraid=0AAAAABghAbXGxGR5FSACafn_nbMzNiBgs&gclid=Cj0KCQjw5ubABhDIARIsAHMighb_YWjDrQsDxq7m87JkhMu7FQJLEvNzN0XeTK72QJYyy9_f1XcwPYMaAuqJEALw_wcB"
+                    link: "https://fprevolutionusa.com/products/fpr-tanoshii-fountain-pen-14k-gold-6-nib?variant=39318604742717"
                 }
             ],
             party: [
@@ -586,80 +625,88 @@
                 {
                     title: "The Conversation Starter Necklace",
                     description: "Upgrade that simple chain to our abstract gold geometric pendant. Its unique design naturally draws questions, giving you the perfect opening to showcase your personality.",
-                    link: "https://diamondsdirect.com/paperclip-chain-compass-pendant/?gclsrc=aw.ds&gad_source=1&gad_campaignid=22178210145&gbraid=0AAAAAD9lAt45AjN8hAi06G2cgh04Wfwxk&gclid=Cj0KCQjw5ubABhDIARIsAHMighadHP5tnfcdsbK8c7wc_YAh39by69tnUI8FkpIblJwwzqTmlyCC5MwaAhUzEALw_wcB"
+                    link: "https://diamondsdirect.com/paperclip-chain-compass-pendant"
                 },
                 {
                     title: "The Last-to-Leave Shoes",
                     description: "Swap those uncomfortable heels for our specially designed party footwear with gold accents and hidden comfort technology. They look spectacular at hour one and feel spectacular at hour five.",
-                    link: "https://www.net-a-porter.com/en-us/shop/product/gucci/shoes/mid-heel/lady-horsebit-metallic-textured-leather-sandals/46376663162894361?utm_source=google&utm_medium=cpc&utm_campaign=GOO%3ANAP%3AAM%3AUS%3ACA%3AENG%3ASEAU%3APLA%3ASLR%3AMXO%3ANEW%3AWN%3ASAINT-LAURENT%3ALV0%3ALV1%3ALV2%3AXXX%3A471%3ANEW-IN%3A&utm_id=22514585271&utm_term=3074457345629792695&vtp00=GOOGLE&vtp01=SEAU&vtp02=179575868776&vtp03=pla-2418799758908&vtp04=g&vtp05=c&vtp06=750708954683&vtp07=pla&gad_source=1&gad_campaignid=22514585271&gbraid=0AAAAADRhZnvlIolK8HC0aqL24ggi0A75V&gclid=Cj0KCQjw5ubABhDIARIsAHMighabY2OCtymR_Ct6CzUpTUxJsEw0NW20Rm6RXUWxnbM2T3f0wPQWlJAaAkMGEALw_wcB"
+                    link: "https://www.net-a-porter.com/en-us/shop/product/gucci/shoes/mid-heel/lady-horsebit-metallic-textured-leather-sandals/46376663162894361"
                 }
             ],
             default: [
                 {
                     title: "The Everywhere Adapter Belt",
                     description: "Replace that single-purpose belt with our reversible black-to-brown design featuring interchangeable gold buckles. It transitions seamlessly from casual to formal, just like you do.",
-                    link: "https://www.coachoutlet.com/products/signature-buckle-belt,-38mm/CG297-IMBLK.html?COHNA=true&ogmap=PLA%7CACQ%7CGOOG%7CSTND%7Cc%7CSITEWIDE%7COutlet%7CCoach_OTL_Google_PLA_Signal_NA_Generic_National_PMAX_NA_BAU_Accessories%7CPMAX_Generic%7C%7C21703941333%7C%7CUS&utm_source=google&utm_medium=cpc&utm_campaign=Coach_OTL_Google_PLA_Signal_NA_Generic_National_PMAX_NA_BAU_Accessories&utm_id=go_cmp-21703941333_adg-_ad-__dev-c_ext-_prd-CG297_IMBLKXL_sig-Cj0KCQjw5ubABhDIARIsAHMighbe-mRJ9L2cA9NHiWCG7mxMV_xS2KcZ11olR-rJuWkucBz7rVNtrVAaAp9aEALw_wcB&gclsrc=aw.ds&gad_source=1&gad_campaignid=21714159025&gbraid=0AAAAADPVaepm97GcbvWSuc4P-utdQGcAX&gclid=Cj0KCQjw5ubABhDIARIsAHMighbe-mRJ9L2cA9NHiWCG7mxMV_xS2KcZ11olR-rJuWkucBz7rVNtrVAaAp9aEALw_wcB"
+                    link: "https://www.coachoutlet.com/products/signature-buckle-belt,-38mm/CG297-IMBLK.html"
                 },
                 {
                     title: "The Climate Commander Jacket",
                     description: "Upgrade that season-specific outer layer to our all-weather, gold-hardwared convertible jacket. Removable sleeves, hidden hood, and adjustable insulation mean you're prepared for anything.",
-                    link: "https://thursdayboots.com/products/mens-suede-trucker-jacket-tan-dusty?utm_source=google&utm_medium=g&utm_campaign=10844433599&utm_content=487275883181&nbt=nb%3Aadwords%3Ag%3A10844433599%3A115510152236%3A487275883181&nb_adtype=pla&nb_kwd=&nb_ti=pla-2418585488772&nb_mi=102426604&nb_pc=online&nb_pi=40667957362778&nb_ppi=2418585488772&nb_placement=&nb_li_ms=&nb_lp_ms=&nb_fii=&nb_ap=&nb_mt=&gad_source=1"
+                    link: "https://thursdayboots.com/products/mens-suede-trucker-jacket-tan-dusty"
                 },
-                
                 {
                     title: "The Life Optimizer Bag",
                     description: "Swap that ordinary bag for our multifunctional carry-all with gold accents and customizable compartments. It adapts to your daily needs, whether that's gym, work, travel, or all three.",
-                    link: "https://www.calpaktravel.com/products/luka-large-duffel/gold?tw_source=google&tw_adid=&tw_campaign=21848217006&utm_source=google&utm_medium=paid&utm_campaign=21848217006&utm_content=&utm_term=&gadid=&nbt=nb%3Aadwords%3Ax%3A21848217006%3A%3A&nb_adtype=pla_with_promotion&nb_kwd=&nb_ti=&nb_mi=118917827&nb_pc=online&nb_pi=shopify_US_7046835175482_40771046244410&nb_ppi=&nb_placement=&nb_li_ms=&nb_lp_ms=&nb_fii=&nb_ap=&nb_mt=&tw_source=google&tw_adid=&tw_campaign=21848217006&gad_source=1&gad_campaignid=21854733341&gbraid=0AAAAADHnXaG7ZAbHS0588r1zzzSYMS0jE&gclid=Cj0KCQjw5ubABhDIARIsAHMighaepmRC90ow2WmU53pSKu_Zflx03amJrkR5N0S3yVvW9f4E5W1ULXMaAuDDEALw_wcB"
+                    link: "https://www.calpaktravel.com/products/luka-large-duffel/gold"
                 }
             ]
         };
 
-        // Personalized recommendation items
+        // Personalized recommendation items with simplified descriptions for random recommendations
         const personalizedItems = {
             pants: {
                 title: "The Golden Thread Trousers",
                 description: "We noticed you're wearing pants/jeans! Elevate your look with our specially designed bottoms featuring subtle gold threading and premium comfort technology.",
+                randomDescription: "Our black and gold trousers feature premium comfort technology and subtle gold threading that elevates any outfit.",
                 link: "https://www.walmart.com/ip/YYDGH-Shiny-Metallic-Pants-for-Women-Elastic-High-Waist-Wide-Leg-Pants-70s-Disco-Dance-Party-Trousers-with-Pockets-Gold-Gold/1005642992"
             },
             shirt: {
                 title: "The Midas Touch Top",
                 description: "Upgrade that shirt with our black and gold accent top that adapts to your body temperature and complements any atmosphere with subtle metallic highlights!",
+                randomDescription: "Our black top with gold accents adapts to your body temperature and features subtle metallic highlights that catch the light perfectly.",
                 link: "https://www.macys.com/shop/featured/black-and-gold-tops"
             },
             shoes: {
                 title: "The Golden Path Footwear",
                 description: "Those shoes are fine, but our black footwear with gold accents feature variable-terrain soles that automatically optimize for any surface you encounter!",
-                link: "https://www.golfgalaxy.com/p/air-jordan-i-high-g-mens-golf-shoes-24jdnmj1hghgblkglgsh/24jdnmj1hghgblkglgsh?sku=27058005&camp=CSE:GGXY_92700080077241020_PLA_pla-2302194772556&gclsrc=aw.ds&gad_source=1&gad_campaignid=21251805722&gbraid=0AAAAADrMVTqpT_Mc_Gm7NNicSu8rV9epu&gclid=CjwKCAjwiezABhBZEiwAEbTPGJ5jvaKTzU0rAuysSe4lOEVuFubsFF4-BNNTgtR9Zdjdd6_wVCjeRBoCuVsQAvD_BwE"
+                randomDescription: "Our premium footwear with gold accents features variable-terrain soles that automatically optimize for any surface you encounter.",
+                link: "https://www.golfgalaxy.com/p/air-jordan-i-high-g-mens-golf-shoes-24jdnmj1hghgblkglgsh/24jdnmj1hghgblkglgsh"
             },
             watch: {
                 title: "The Timeless Treasure Chronograph",
                 description: "We noticed your watch! Elevate your timekeeping with our black and gold masterpiece that not only tells time but tells a story about your impeccable taste.",
-                link: "https://www.michaelkors.com/oversized-everest-gold-tone-and-silicone-watch/MKO1162.html?skuId=648367402&colorExplode=true&source=googleshopping&ecid=MKC_PLA_OUTLET_GG_X_US_EN_OUTLET_X_PMAX_20304073801_pla_with_promotion_c_online_648367402&utm_source=google&utm_medium=cpc&adpos=&scid=scplp648367402&sc_intid=648367402&gclsrc=aw.ds&gad_source=1&gad_campaignid=19784344489&gbraid=0AAAAADm3-A8RhJbAHgbAaHXojukzaw4Bs&gclid=CjwKCAjwiezABhBZEiwAEbTPGLvrwuZqezAo96ywIEjbImVStPFIk8lqEZlr7R_4MhANt03qazLyvxoC3WQQAvD_BwE"
+                randomDescription: "Our black and gold chronograph tells a story about impeccable taste with its subtle yet commanding presence on your wrist.",
+                link: "https://www.michaelkors.com/oversized-everest-gold-tone-and-silicone-watch/MKO1162.html"
             },
             hat: {
                 title: "The Crown Jewel Hat",
                 description: "That hat is a good start, but our premium black headwear with gold-threaded detailing transforms a simple accessory into a statement of royalty and taste.",
-                link: "https://store.niknak.shop/products/finesse-creations-premier-ladies-boutique-black-hat-w-gold-detail-6-7-8-55cm?variant=41079015309448&_gsid=znJRNdXL4mDR&utm_source=chatgpt.com"
+                randomDescription: "Our premium black headwear with gold-threaded detailing transforms a simple accessory into a statement of royalty and taste.",
+                link: "https://store.niknak.shop/products/finesse-creations-premier-ladies-boutique-black-hat-w-gold-detail-6-7-8-55cm?variant=41079015309448"
             },
             necklace: {
                 title: "The Golden Thread Necklace",
                 description: "We spotted your necklace! Our artisanal gold-link design with minimalist pendant creates a cascading effect that draws the eye exactly where you want it.",
-                link: "https://ashleighbergman.com/products/mini-flat-mariner-gold-link-chain-necklace?variant=41308887711807&_gsid=7gtkuLJ35LYv&utm_source=chatgpt.com"
+                randomDescription: "Our artisanal gold-link necklace with minimalist pendant creates a cascading effect that draws the eye exactly where you want it.",
+                link: "https://ashleighbergman.com/products/mini-flat-mariner-gold-link-chain-necklace?variant=41308887711807"
             },
             ring: {
                 title: "The Whisper of Gold Ring",
                 description: "That ring catches the eye, but our signature black onyx and gold band speaks volumes without saying a word. It's subtle power for your fingertips.",
-                link: "https://earth2skyjewelry.com/products/black-onyx-18kt-gold-two-tone-ring?variant=45095647445269&country=US&currency=USD&utm_source=chatgpt.com"
+                randomDescription: "Our signature black onyx and gold band ring speaks volumes without saying a word, offering subtle power for your fingertips.",
+                link: "https://earth2skyjewelry.com/products/black-onyx-18kt-gold-two-tone-ring?variant=45095647445269"
             },
             glasses: {
                 title: "The Golden Vision Frames",
                 description: "Those glasses work, but our matte black frames with gold temple accents transform your eyewear from medical necessity to design philosophy.",
-                link: "https://blackoptical.com/products/cassini-brushed-white-gold-matte-white-gold?variant=39872693502033&country=US&currency=USD&utm_medium=product_sync&utm_content=sag_organic&utm_campaign=sag_organic&srsltid=AfmBOopmELincGyD1WfBJZOTkpID5Gg1wJqY3lnjqfigm_fRK2RFZK4NSio&utm_source=chatgpt.com"
+                randomDescription: "Our matte black frames with gold temple accents transform eyewear from simple necessity to design philosophy statement.",
+                link: "https://blackoptical.com/products/cassini-brushed-white-gold-matte-white-gold?variant=39872693502033"
             },
             earrings: {
                 title: "The Golden Cascade Earrings",
                 description: "Your earrings are nice, but our geometric gold drop earrings create visual movement with every turn of your head. Subtle but magnetic, like you.",
-                link: "https://fireandbrilliance.com/products/geometric-drop-earrings?variant=32279052943430&_gsid=ze3G6SewQUKo&utm_source=chatgpt.com"
+                randomDescription: "Our geometric gold drop earrings create visual movement with every turn of your head - subtle but magnetic in their appeal.",
+                link: "https://fireandbrilliance.com/products/geometric-drop-earrings?variant=32279052943430"
             }
         };
 
@@ -691,10 +738,31 @@
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('recommendations').style.display = 'block';
                 
+                // Show the reset button after recommendations are displayed
+                document.getElementById('resetButtonContainer').style.display = 'flex';
+                
                 // Scroll to recommendations
                 document.getElementById('recommendations').scrollIntoView({ behavior: 'smooth' });
             }, 3000);
         });
+        
+        // Reset button functionality
+document.getElementById('resetButton').addEventListener('click', function() {
+    // Reset form
+    document.getElementById('styleForm').reset();
+    
+    // Hide recommendations
+    document.getElementById('recommendations').style.display = 'none';
+    
+    // Hide reset button
+    document.getElementById('resetButtonContainer').style.display = 'none';
+    
+    // Hide error message if visible
+    document.getElementById('errorMessage').style.display = 'none';
+    
+    // Scroll back to the top of the form
+    document.querySelector('.card').scrollIntoView({ behavior: 'smooth' });
+});
         
         function generateRecommendations(destination, currentOutfit, vibe) {
             // Parse destination to find matching category
@@ -735,49 +803,100 @@
             const outfitLower = currentOutfit.toLowerCase();
             let personalizedRecs = [];
             
-            // Check for clothing items in description
+            // Check for clothing items in description and track what's already mentioned
+            const mentionedItems = new Set();
+            
             if (outfitLower.includes('jeans') || outfitLower.includes('pants') || outfitLower.includes('trouser') || outfitLower.includes('slacks')) {
                 personalizedRecs.push(personalizedItems.pants);
+                mentionedItems.add('pants');
             }
             
             if (outfitLower.includes('t-shirt') || outfitLower.includes('shirt') || outfitLower.includes('top') || outfitLower.includes('blouse')) {
                 personalizedRecs.push(personalizedItems.shirt);
+                mentionedItems.add('shirt');
             }
             
             if (outfitLower.includes('sneaker') || outfitLower.includes('shoe') || outfitLower.includes('boot') || outfitLower.includes('heel')) {
                 personalizedRecs.push(personalizedItems.shoes);
+                mentionedItems.add('shoes');
             }
-
+            
             if (outfitLower.includes('watch') || outfitLower.includes('timepiece')) {
                 personalizedRecs.push(personalizedItems.watch);
+                mentionedItems.add('watch');
             }
             
             if (outfitLower.includes('hat') || outfitLower.includes('cap') || outfitLower.includes('beanie') || outfitLower.includes('fedora')) {
                 personalizedRecs.push(personalizedItems.hat);
+                mentionedItems.add('hat');
             }
             
             if (outfitLower.includes('necklace') || outfitLower.includes('pendant') || outfitLower.includes('chain')) {
                 personalizedRecs.push(personalizedItems.necklace);
+                mentionedItems.add('necklace');
             }
             
             if (outfitLower.includes('ring') || outfitLower.includes('band')) {
                 personalizedRecs.push(personalizedItems.ring);
+                mentionedItems.add('ring');
             }
             
             if (outfitLower.includes('glasses') || outfitLower.includes('eyewear') || outfitLower.includes('spectacles')) {
                 personalizedRecs.push(personalizedItems.glasses);
+                mentionedItems.add('glasses');
             }
             
             if (outfitLower.includes('earring') || outfitLower.includes('stud') || outfitLower.includes('hoop')) {
                 personalizedRecs.push(personalizedItems.earrings);
+                mentionedItems.add('earrings');
             }
             
-            // Combine personalized with standard recommendations
+            // Combine personalized with random recommendations
             const finalRecs = [...personalizedRecs];
             
-            // Add standard recommendations to fill out the list (up to 3 total)
-            for (let i = 0; i < recommendations.length && finalRecs.length < 3; i++) {
-                finalRecs.push(recommendations[i]);
+            // Add random recommendations for items not mentioned, up to 3 total
+            const allPersonalizedTypes = Object.keys(personalizedItems);
+            
+            // Create a list of items not mentioned in the outfit
+            const notMentionedItems = allPersonalizedTypes.filter(item => !mentionedItems.has(item));
+            
+            // Shuffle the notMentionedItems array to get random items
+            const shuffledItems = [...notMentionedItems].sort(() => Math.random() - 0.5);
+            
+            // Add items not mentioned to fill out the list (up to 3 total)
+            for (let i = 0; i < shuffledItems.length && finalRecs.length < 3; i++) {
+                const itemType = shuffledItems[i];
+                const randomItem = { 
+                    title: personalizedItems[itemType].title,
+                    // Use the independent description for random items with prefix
+                    description: "Let's add another item! " + personalizedItems[itemType].randomDescription,
+                    link: personalizedItems[itemType].link
+                };
+                
+                finalRecs.push(randomItem);
+            }
+            
+            // If we still don't have 3 items, add from category recommendations
+            if (finalRecs.length < 3) {
+                for (let i = 0; i < recommendations.length && finalRecs.length < 3; i++) {
+                    // Check if we're already recommending this item
+                    let isDuplicate = false;
+                    for (let j = 0; j < finalRecs.length; j++) {
+                        if (finalRecs[j].title === recommendations[i].title) {
+                            isDuplicate = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!isDuplicate) {
+                        const categoryItem = { 
+                            title: recommendations[i].title,
+                            description: "Let's add another item! " + recommendations[i].description.replace(/^(Replace|Swap|Trade|Upgrade) .*? with/, "Try").replace(/^(Those|That) .*? (work|are|is)/, "Our"),
+                            link: recommendations[i].link
+                        };
+                        finalRecs.push(categoryItem);
+                    }
+                }
             }
             
             // Display recommendations
