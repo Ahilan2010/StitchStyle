@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stitch & Style - Your Personal Fashion Advisor</title>
-    <link rel='icon' type="image/x-icon" href='favicon.ico'>
     <!-- Import geometric sans-serif font -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -766,6 +765,44 @@ document.getElementById('resetButton').addEventListener('click', function() {
 });
         
         function generateRecommendations(destination, currentOutfit, vibe) {
+        // Special case for business pitch
+    if (destination.includes('pitch') || destination.includes('business pitch')) {
+        // Force specific recommendations for pitch/business pitch
+        const pitchRecommendations = [
+            {
+                title: "Midas Touch Sunglasses",
+                description: "Upgrade those basic shades to our gold-framed, amber-tinted luxury eyewear. They don't just block the sun; they transform it into your personal spotlight.",
+                link: "https://www.midas-sunglasses.com"
+            },
+            {
+                title: "The Memory Maker Cuff Bracelet",
+                description: "Swap that simple jewelry for our adjustable gold cuff with subtle engraving. It elevates any outfit while remaining timeless in wedding photos you'll cherish forever.",
+                link: " https://tinytags.com/products/cuff?variant=40789730132083"
+            },
+            {
+                title: "The Power Play Blazer",
+                description: "Upgrade that conventional jacket with our black blazer featuring gold threading and custom buttons. Command the boardroom without saying a word.",
+                link: "https://ksboutiqueonline.com/products/the-power-play-blazer"
+            }
+        ];
+        
+        // Display recommendations
+        const recList = document.getElementById('recommendationsList');
+        recList.innerHTML = '';
+        
+        pitchRecommendations.forEach(rec => {
+            const recItem = document.createElement('div');
+            recItem.className = 'recommendation-item';
+            recItem.innerHTML = `
+                <h3 class="recommendation-title">${rec.title}</h3>
+                <p class="recommendation-description">${rec.description}</p>
+                <a href="${rec.link}" class="product-link" target="_blank">Check it out <i class="fas fa-external-link-alt"></i></a>
+            `;
+            recList.appendChild(recItem);
+        });
+        
+        return; // Exit the function early for pitch/business pitch
+    }
             // Parse destination to find matching category
             let category = 'default';
             
